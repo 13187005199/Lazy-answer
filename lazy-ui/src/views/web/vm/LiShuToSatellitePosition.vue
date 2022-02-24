@@ -2,7 +2,7 @@
   <div class="app-container" style="max-width: 1500px;margin: 0 auto;padding: 16px;float: right;width: 60%">
     <h3 style="font-weight: 50">{{ data.title }}</h3>
 
-    <div style="position: absolute;left: 5px; top: 42px; width: 40%;height:700px;overflow:auto;">
+    <div style="position: absolute;left: 5px; top: 0; width: 40%;height:100%;overflow-y: auto;">
       <el-card>
         <div slot="header" class="clearfix">
           <span>实验步骤</span>
@@ -10,7 +10,7 @@
           <span v-else style="float: right;color: #498c5f"> <a
             :href="data.resource.url" target="_blank">点击此处下载实验大纲</a></span>
         </div>
-        <div v-html="data.process">
+        <div style="padding-top:25px;" v-html="data.process">
 
         </div>
 

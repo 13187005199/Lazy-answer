@@ -6,7 +6,7 @@
     <!--        <el-step v-for="item in steps" :key="item.title" :title="item.title"/>-->
     <!--      </el-steps>-->
     <!--    </div>-->
-    <div style="position: absolute;left: 0; width: 40%;height:700px;overflow:auto;">
+    <div style="position: absolute;left: 5px; top: 0; width: 40%;height:100%;overflow-y: auto;">
       <el-card>
         <div slot="header" class="clearfix">
           <span>实验步骤</span>
@@ -14,7 +14,7 @@
           <span v-else style="float: right;color: #498c5f"> <a
             :href="data.resource.url" target="_blank">点击此处下载实验大纲</a></span>
         </div>
-        <div v-html="data.process">
+        <div style="" v-html="data.process">
 
         </div>
       </el-card>

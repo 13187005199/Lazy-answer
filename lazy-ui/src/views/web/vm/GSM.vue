@@ -3,7 +3,7 @@
     <div><h2>{{exData.title}}</h2></div>
     <el-divider/>
     <div>
-      <el-card style="position: absolute;left: 5px; top: 42px; width: 40%;height:700px;overflow:auto;">
+      <el-card style="position:absolute;left:5px;top:0; width:40%;height:100%;overflow-y:auto;overflow-x:auto;">
         <div slot="header" class="clearfix">
           <span>实验步骤</span>
           <span style="float: right;color: #498c5f" v-if="exData.resource==null">暂未上传实验大纲</span>

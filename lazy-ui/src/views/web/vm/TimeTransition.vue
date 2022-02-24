@@ -10,14 +10,14 @@
 <!--    </div>-->
     <el-divider/>
     <div>
-      <el-card style="position: absolute;left: 5px; top: 50px; width: 40%;height:700px;overflow:auto;">
+      <el-card style="position:absolute;left:5px;top:0px;width:40%;height:100%;overflow-y:auto;">
         <div slot="header" class="clearfix">
           <span>实验流程</span>
           <!--          <span @click="isCaonima" style="color:red"> 展开>>> </span>-->
           <span style="float: right;color: #498c5f"> <a
             :href="data.resource.url" :download="data.resource.name" target="_blank">点击此处下载实验大纲</a></span>
         </div>
-        <div v-html="data.process"></div>
+        <div style="padding-top:25px;" v-html="data.process"></div>
         <!--        <div style="font-size:20px;font-weight: 700">-->
         <!--          1）系统随机生成格里高利时，用户根据转换公式，计算出儒略日后，填入提示的框中，由系统判断对错；-->
         <!--        </div>-->
