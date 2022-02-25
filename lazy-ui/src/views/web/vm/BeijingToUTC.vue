@@ -21,26 +21,73 @@
     </div>
     <div class="card" style="margin-top: 10px;">
       <!--      <p>输入格式:YYYY-M-D HH:ss:mm</p>-->
-      <el-form label-width="80px">
+      <el-form label-width="80px" v-if="isbacks">
         <el-col :span="24">
-          <el-form-item label="北斗时">
+          <el-form-item label="北斗时" prop="bd">
             <el-input v-model="form.bd" style="width: 200px"></el-input>
             <el-button @click="generateData">刷新</el-button>
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="UTC">
+          <el-form-item label="UTC" prop="utc">
             <el-input v-model="form.utc" placeholder="输入北斗时转换的UTC" style="width: 200px"></el-input>
             <el-button @click="submitUTC">提交</el-button>
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="北京时">
+          <el-form-item label="北京时" prop="bjTime">
             <el-input placeholder="输入UTC转换的北京时间" ref="bjInput" v-model="form.bjTime" style="width: 200px"/>
             <el-button @click="submitBEIJIN">提交</el-button>
           </el-form-item>
         </el-col>
       </el-form>
+
+       <!-- <el-form label-width="80px" v-if="isbackse">
+          <el-col :span="24">
+          <el-form-item label="UTC" prop="utc">
+            <el-input v-model="form.utc" placeholder="输入北斗时转换的UTC" style="width: 200px"></el-input>
+            <el-button @click="submitUTC">刷新</el-button>
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="北京时" prop="bjTime">
+            <el-input placeholder="输入UTC转换的北京时间" ref="bjInput" v-model="form.bjTime" style="width: 200px"/>
+            <el-button @click="submitBEIJIN">提交</el-button>
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="北斗时" prop="bd">
+            <el-input v-model="form.bd" style="width: 200px"></el-input>
+            <el-button @click="generateData">提交</el-button>
+          </el-form-item>
+        </el-col>
+      </el-form> -->
+
+       <!-- <el-form label-width="80px" v-if="ismacks">
+         <el-col :span="24">
+          <el-form-item label="北京时" prop="bjTime">
+            <el-input placeholder="输入UTC转换的北京时间" ref="bjInput" v-model="form.bjTime" style="width: 200px"/>
+            <el-button @click="submitBEIJIN">刷新</el-button>
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="北斗时" prop="bd">
+            <el-input v-model="form.bd" style="width: 200px"></el-input>
+            <el-button @click="generateData">提交</el-button>
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item label="UTC" prop="utc">
+            <el-input v-model="form.utc" placeholder="输入北斗时转换的UTC" style="width: 200px"></el-input>
+            <el-button @click="submitUTC">提交</el-button>
+          </el-form-item>
+        </el-col>
+      </el-form> -->
+      <!-- <el-row>
+        <el-button type="primary" size="mini" plain @click="marks">北斗时</el-button>
+        <el-button type="success" size="mini" plain @click="markse">UTC</el-button>
+        <el-button type="info" size="mini" plain @click="marksa">北京时</el-button>
+      </el-row> -->
     </div>
   </div>
 </template>
@@ -55,7 +102,7 @@ export default {
   data() {
     return {
       data: {},
-      form: {bd: '', bjTime: '',utc:''},
+      form: {bd: '', bjTime: '', utc:''},
       showBj: false,
       current: 0,
       steps: [
@@ -70,7 +117,22 @@ export default {
         },
       ],
       utcTime: '',
-      beiJinTime: ''
+      beiJinTime: '',
+      isbacks:true,
+      isbackse:false,
+      ismacks:false,
+
+      // rules:{
+      //   bd: [
+      //     {required: true, message: '请输入北斗时', trigger: 'blur'}
+      //     ],
+      //   utc: [
+      //     {required: true, message: '请输入UTC', trigger: 'blur'}
+      //     ],
+      //   bjTime: [
+      //     {required: true, message: '请输入北京时', trigger: 'blur'}
+      //     ],
+      // }
     }
   },
   created() {
@@ -113,10 +175,10 @@ export default {
         this.notifySuccess("正确", "转换正确")
       } else {
         this.$confirm('转换错误，正确答案为：' + utcTime, '提示', {
-          confirmButtonText: '重试',
+          confirmButtonText: '确定',
           type: 'warning'
         }).then(() => {
-
+          this.form.utc = this.utcTime
         })
       }
     },
@@ -131,13 +193,29 @@ export default {
           this.notifySuccess("正确", "转换正确")
         } else {
           this.$confirm('转换错误，正确答案为：' + systemBeiJinTime, '提示', {
-            confirmButtonText: '重试',
+            confirmButtonText: '确定',
             type: 'warning'
           }).then(() => {
-
+            this.form.bjTime = this.beiJinTime
           })
         }
       }
+    },
+    //切换
+    marks(){
+      this.isbacks=true;
+      this.isbackse=false;
+      this.ismacks=false;
+    },
+    markse(){
+      this.isbacks=false;
+      this.isbackse=true;
+      this.ismacks=false;
+    },
+    marksa(){
+      this.isbacks=false;
+      this.isbackse=false;
+      this.ismacks=true;
     }
   },
 }

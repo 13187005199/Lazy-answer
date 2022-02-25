@@ -79,8 +79,8 @@ export default {
   methods:{
     handle(){
       if (this.isType){
-        var v = this.BDT
-        if ((v*1) ===this.data.output.result1){
+        var v = this.data.output.result1
+        if ((this.BDT*1) ===this.data.output.result1){
           //this.notifySuccess("正确", "转换正确")
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -90,12 +90,17 @@ export default {
             this.$refs.GPST.focus();
           })
         } else {
-          this.notifyError("转换错误，请重试")
           this.$refs.BDT.focus()
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.BDT = this.data.output.result1
+          })
         }
       }else {
-        var v = this.GPST
-        if ((v*1) ===this.data.output.result2){
+        var v = this.data.output.result2
+        if ((this.GPST*1) ===this.data.output.result2){
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '完成',
             type: 'success'
@@ -109,7 +114,12 @@ export default {
 
         } else {
           this.$refs.GPST.focus();
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.GPST = this.data.output.result2
+          })
         }
       }
     }

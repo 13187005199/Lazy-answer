@@ -175,28 +175,46 @@ export default {
   methods: {
     handle() {
       if (!this.heightFlag) {
+        var linheight = this.data.output.result1
         if ((this.form.height * 1) === this.data.output.result1) {
           this.notifySuccess("正确", "转换正确")
           this.fwjFlag = false
           this.heightFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ linheight, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.height = this.data.output.result1
+          })
         }
       } else if (!this.fwjFlag) {
+         var linheight = this.data.output.result2
         if ((this.form.fwj * 1) === this.data.output.result2) {
           this.notifySuccess("正确", "转换正确")
           this.dxzjFlag = false
           this.fwjFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ linheight, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.fwj = this.data.output.result2
+          })
         }
       } else if (!this.dxzjFlag) {
+        var linheight = this.data.output.result2
         if ((this.form.dxzj * 1) === this.data.output.result3) {
           this.notifySuccess("正确", "转换正确")
           this.ccdFlag = false
           this.dxzjFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ linheight, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.dxzj = this.data.output.result3
+          })
         }
       } else if (!this.ccdFlag) {
         var v = this.data.output.result4 + "," + this.data.output.result5
@@ -205,7 +223,12 @@ export default {
           this.ccdjwdFlag = false
           this.ccdFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ccd = this.data.output.result4 + "," + this.data.output.result5
+          })
         }
       } else if (!this.ccdjwdFlag) {
         var v = this.data.output.result6 + "," + this.data.output.result7
@@ -214,7 +237,12 @@ export default {
           this.aiFlag = false
           this.ccdjwdFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ccdjwd = this.data.output.result6 + "," + this.data.output.result7
+          })
         }
       } else if (!this.aiFlag) {
         var v = this.data.output.result21
@@ -225,39 +253,68 @@ export default {
           this.aoFlag = false
           this.aiFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v1, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ai = this.data.output.result21.join(",")
+          })
         }
       } else if (!this.aoFlag) {
+        var v = this.data.output.result8
         if ((this.form.ao * 1) === this.data.output.result8) {
           this.notifySuccess("正确", "转换正确")
           this.vtecFlag = false
           this.aoFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ao = this.data.output.result8
+          })
         }
       } else if (!this.vtecFlag) {
+        var v = this.data.output.result9
         if ((this.form.vtec * 1) === this.data.output.result9) {
           this.notifySuccess("正确", "转换正确")
           this.tyFlag = false
           this.vtecFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.vtec = this.data.output.result9
+          })
         }
       } else if (!this.tyFlag) {
+        var v = this.data.output.result15
         if ((this.form.ty * 1) === this.data.output.result15) {
           this.notifySuccess("正确", "转换正确")
           this.tyvFlag = false
           this.tyFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ty = this.data.output.result15
+          })
         }
       } else if (!this.tyvFlag) {
+        var v = this.data.output.result10
         if ((this.form.tyv * 1) === this.data.output.result10) {
           this.notifySuccess("正确", "转换正确")
           this.yzFlag = false
           this.tyvFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.tyv = this.data.output.result10
+          })
         }
       } else if (!this.yzFlag) {
         var v = this.data.output.result11 + "," + this.data.output.result12
@@ -266,14 +323,24 @@ export default {
           this.bdsFlag = false
           this.yzFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.yz = this.data.output.result11 + "," + this.data.output.result12
+          })
         }
       }else if (!this.bdsFlag) {
         var v = this.data.output.result13 + "," + this.data.output.result14
         if (this.form.bds === v) {
           this.notifySuccess("正确", "转换正确")
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.bds = this.data.output.result13 + "," + this.data.output.result14
+          })
         }
       }
 

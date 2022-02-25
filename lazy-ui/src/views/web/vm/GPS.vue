@@ -183,6 +183,7 @@ export default {
   methods: {
     handle() {
       if (!this.heightFlag) {
+        var v = this.data.output.result1
         if ((this.form.height * 1) === this.data.output.result1) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -194,9 +195,15 @@ export default {
           this.heightFlag = true
           this.form.heightAnswer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.height = this.data.output.result1
+          })
         }
       } else if (!this.fwjFlag) {
+        var v = this.data.output.result2
         if ((this.form.fwj * 1) === this.data.output.result2) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -208,7 +215,12 @@ export default {
           this.fwjFlag = true
           this.form.fwjAnswer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.fwj = this.data.output.result2
+          })
         }
       } else if (!this.ccdFlag) {
         var v = this.data.output.result3 + "," + this.data.output.result4
@@ -223,9 +235,15 @@ export default {
           this.ccdFlag = true
           this.form.ccdAnswer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ccd = this.data.output.result3 + "," + this.data.output.result4
+          })
         }
       } else if (!this.A2Flag) {
+        var v = this.data.output.result5
         if ((this.form.A2 * 1) === this.data.output.result5) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -237,9 +255,15 @@ export default {
           this.A4Flag = false
           this.form.a2Answer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.A2 = this.data.output.result5
+          })
         }
       } else if (!this.A4Flag) {
+        var v = this.data.output.result6
         if ((this.form.A4 * 1) === this.data.output.result6) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -251,10 +275,16 @@ export default {
           this.czdlFlag = false
           this.form.a4Answer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.A4 = this.data.output.result6
+          })
         }
       } else if (!this.czdlFlag) {
         console.log(this.form.czdl*1)
+        var v = this.data.output.result7
         console.log((this.form.czdl * 1) === this.data.output.result7)
         if ((this.form.czdl * 1) === this.data.output.result7) {
           this.$confirm('转换正确!', '提示', {
@@ -267,9 +297,15 @@ export default {
           this.tyFlag = false
           this.form.czdlAnswer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.czdl = this.data.output.result7
+          })
         }
       } else if (!this.tyFlag) {
+        var v = this.data.output.result8
         if ((this.form.ty * 1) === this.data.output.result8) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
@@ -281,9 +317,15 @@ export default {
           this.yinziFlag = false
           this.form.tyAnswer = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.ty = this.data.output.result8
+          })
         }
       } else if (!this.yinziFlag) {
+        var v = this.data.output.result9
         if ((this.form.yinzi * 1) === this.data.output.result9) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '完成',
@@ -294,7 +336,12 @@ export default {
           this.form.yinziAnswer = true
           this.yinziFlag = true
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.form.yinzi = this.data.output.result9
+          })
         }
       }
     }

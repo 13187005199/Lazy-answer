@@ -136,10 +136,10 @@ export default {
             } else {
               this.active = 2
               this.$confirm('转换错误，正确答案为：' +this.julianTime(this.form.time) , '提示', {
-                confirmButtonText: '重试',
+                confirmButtonText: '确定',
                 type: 'warning'
               }).then(() => {
-
+                this.form.julian = this.julianTime(this.form.time)
               })
               this.rest();
             }
@@ -147,7 +147,7 @@ export default {
             let system = moment(this.julianToTime(this.form.julian)).format("YYYY-MM-DD HH:mm:ss")
             var date = new Date(this.form.time);
             let user = moment(date).format("YYYY-MM-DD HH:mm:ss");
-            console.log(system,user)
+            console.log(system,user,date)
             if (user === system) {
               this.active = 2
               this.notifySuccess("正确", "转换正确")
@@ -156,10 +156,10 @@ export default {
             } else {
               this.active = 2
               this.$confirm('转换错误，正确答案为：' +system , '提示', {
-                confirmButtonText: '重试',
+                confirmButtonText: '确定',
                 type: 'warning'
               }).then(() => {
-
+                this.form.time = moment(this.julianToTime(this.form.julian)).format("YYYY-MM-DD HH:mm:ss")
               })
               this.rest();
             }

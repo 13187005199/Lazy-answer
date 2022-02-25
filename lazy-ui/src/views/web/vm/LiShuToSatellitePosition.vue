@@ -22,9 +22,9 @@
         <el-form label-width="100px">
           <el-col :span="24">
             <el-form-item label="接收机参数">
-              <el-input disabled
-                        style="width: 200px"
-                        clearable/>
+              <el-input 
+                style="width: 200px"
+                clearable/>
               <el-button>提交</el-button>
             </el-form-item>
           </el-col>

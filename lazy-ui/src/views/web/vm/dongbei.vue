@@ -96,6 +96,7 @@ export default {
   methods: {
     handle() {
       var v = this.XYZ2ENUDATA.input2.B + "," + this.XYZ2ENUDATA.input2.L + "," + this.XYZ2ENUDATA.input2.H
+      console.log('v',v)
       if (this.ddzb === v) {
         this.$confirm('转换正确!', '提示', {
           confirmButtonText: '下一题',
@@ -105,7 +106,12 @@ export default {
         })
         this.isType = false
       } else {
-        this.notifyError("转换错误，请重试")
+         this.$confirm('转换错误，正确答案为：' + v, '提示', {
+                confirmButtonText: '确定',
+                type: 'warning'
+              }).then(()=>{
+                this.ddzb = this.XYZ2ENUDATA.input2.B + "," + this.XYZ2ENUDATA.input2.L + "," + this.XYZ2ENUDATA.input2.H
+              })
       }
     },
     handle1() {
@@ -118,7 +124,12 @@ export default {
 
         })
       } else {
-        this.notifyError("转换错误，请重试")
+        this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+          confirmButtonText: '确定',
+          type:'warning'
+        }).then(()=>{
+          this.dbzb = this.XYZ2ENUDATA.output.e
+        })
       }
     }
   }

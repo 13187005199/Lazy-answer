@@ -19,9 +19,9 @@
     <el-card>
       <span v-if="isType">
         地心地固直角坐标系:
-        <el-input v-model="dxdgzj.X" disabled style="width: 170px"/>
-        <el-input v-model="dxdgzj.Y" disabled style="width: 170px"/>
-        <el-input v-model="dxdgzj.Z" disabled style="width: 170px"/>
+        <el-input v-model="dxdgzj.X"  style="width: 170px"/>
+        <el-input v-model="dxdgzj.Y"  style="width: 170px"/>
+        <el-input v-model="dxdgzj.Z"  style="width: 170px"/>
         <el-button @click="generateData">刷新</el-button>
       </span>
       <span v-else>
@@ -68,10 +68,10 @@ export default {
       isType: true,
       dxdgzj: {},
       output: {},
-      ddzbx: {},
+      ddzbx: {B:'',L:'',H:''},
       BLHToXYZ: {},
-      dxdgzbx: {},
-      data: {}
+      dxdgzbx: {X:'',Y:'',Z:''},
+      data: {},
     }
   },
   created() {
@@ -139,23 +139,27 @@ export default {
       }else {
         this.$alert('转换错误，正确答案为：\n'+system, '提示', '标题名称', {
           confirmButtonText: '确定',
-          callback: action => {
-
-          }
-        });
-
+          type:'warbing',}).then(()=>{
+            this.ddzbx.B = this.output.B
+            this.ddzbx.L = this.output.L
+            this.ddzbx.H = this.output.H
+          })
       }
     },
     submitGeocentric() {
-      var system = this.BLHToXYZ.output.X + "," + this.BLHToXYZ.output.Y + "," + this.BLHToXYZ.output.Z
-      console.log(system)
-      var user =  this.dxdgzbx.X+ "," +this.dxdgzbx.Y+","+this.dxdgzbx.Z
+      var system = this.dxdgzj.X + "," + this.dxdgzj.Y + "," + this.dxdgzj.Z
+      var user =  this.dxdgzbx.X + "," +this.dxdgzbx.Y + "," + this.dxdgzbx.Z
+      console.log(system,user)
       if (system===user){
         this.notifySuccess("正确", "转换正确")
       }else {
         this.$alert('转换错误，正确答案为：\n'+system, '提示', '标题名称', {
           confirmButtonText: '确定',
-        });
+          type:'warbing',}).then(()=>{
+            this.dxdgzbx.X = this.dxdgzj.X
+            this.dxdgzbx.Y = this.dxdgzj.Y
+            this.dxdgzbx.Z = this.dxdgzj.Z
+          })
       }
     }
   }

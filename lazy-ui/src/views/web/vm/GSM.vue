@@ -80,8 +80,8 @@ export default {
   methods: {
     handle() {
       if (this.isType) {
-        var v = this.wj
-        if ((v * 1) === this.data.output.result1) {
+        var v = this.data.output.result1
+        if ((this.wj * 1) === this.data.output.result1) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '下一题',
             type: 'success'
@@ -89,11 +89,16 @@ export default {
           })
           this.isType = false
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.wj = this.data.output.result1
+          })
         }
       } else {
-        var v = this.dl
-        if ((v * 1) === this.data.input3) {
+        var v = this.data.input3
+        if ((this.dl * 1) === this.data.input3) {
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '完成',
             type: 'success'
@@ -101,7 +106,12 @@ export default {
           })
           this.isType = false
         } else {
-          this.notifyError("转换错误，请重试")
+          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+            confirmButtonText: '确定',
+            type:'warning'
+          }).then(()=>{
+            this.dl = this.data.input3
+          })
         }
       }
 
