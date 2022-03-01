@@ -16,35 +16,50 @@
       </el-card>
     </div>
     <el-card>
-      <span>伪距:{{ data.input }}、TGD:{{ data.input2 }}</span>
+      <div class="user" style="margin-top: 20px;">
+        伪距：
+        <el-input v-model="data.input " style="width: 220px"/>
+      </div>
+      <div class="frequency" style="margin-top: 20px;">
+        TGD：
+        <el-input v-model="data.input2 " style="width: 220px"/>
+        <el-button @click="refresh" class="properties">刷新</el-button>
+      </div>
+      <!-- <span>伪距:{{ data.input }}、TGD:{{ data.input2 }}</span> -->
     </el-card>
     <el-card class="card" style="margin-top: 10px">
       <p v-if="isType">ps:计算各频点的伪距修正值，得到修正后的伪距</p>
       <p v-else>ps:计算各频点的电离层延迟值</p>
-      <div style="text-align: center">
+      <div>
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">
             <el-row :gutter="24">
               <el-col :span="24">
                 <el-form-item label="伪距" prop="time">
-                  <el-input :disabled="!isType" :style="{width: '100%'}" v-model="wj" placeholder="伪距"></el-input>
+                  <el-input  :style="{width: '50%'}"  v-model="wj" placeholder="伪距"></el-input>
+                  <el-button type="primary" @click="handle" class="properties">
+                    提交
+                  </el-button>
                 </el-form-item>
               </el-col>
             </el-row>
-            <el-row :gutter="24" v-if="!isType">
+            <el-row :gutter="24" >
               <el-col :span="24">
                 <el-form-item label="电离层延迟" prop="time">
-                  <el-input :style="{width: '100%'}" v-model="dl" placeholder="电离层延迟"></el-input>
+                  <el-input :style="{width: '50%'}" v-model="dl" placeholder="电离层延迟"></el-input>
+                  <el-button type="primary" @click="handle1" class="properties">
+                    提交
+                  </el-button>
                 </el-form-item>
               </el-col>
             </el-row>
-            <el-row>
+            <!-- <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
                 <el-button type="primary" @click="handle">
                   提交
                 </el-button>
               </el-col>
-            </el-row>
+            </el-row> -->
           </el-form>
         </div>
       </div>
@@ -61,7 +76,8 @@ export default {
   data() {
     return {
       exData:{},
-      isType: true,
+      // getType:false,
+      // isType: true,
       data: {},
       wj: null,
       dl: null,
@@ -78,25 +94,35 @@ export default {
     })
   },
   methods: {
+    //刷新按钮
+    refresh(){
+      exp10_shuangpinDianLiCeng().then(response => {
+        console.log(response)
+        this.data = response.data
+      })
+      this.wj = null
+      this.dl = null
+    },
     handle() {
-      if (this.isType) {
-        var v = this.data.output.result1
-        if ((this.wj * 1) === this.data.output.result1) {
-          this.$confirm('转换正确!', '提示', {
-            confirmButtonText: '下一题',
-            type: 'success'
-          }).then(() => {
-          })
-          this.isType = false
-        } else {
-          this.$confirm('转换错误，正确答案为：'+ v, '提示',{
-            confirmButtonText: '确定',
-            type:'warning'
-          }).then(()=>{
-            this.wj = this.data.output.result1
-          })
-        }
+      var v = this.data.output.result1
+      if ((this.wj * 1) === this.data.output.result1) {
+        this.$confirm('转换正确!', '提示', {
+          confirmButtonText: '下一题',
+          type: 'success'
+        }).then(() => {
+        })
+        this.getType = true
+        this.isType = false
       } else {
+        this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+          confirmButtonText: '确定',
+          type:'warning'
+        }).then(()=>{
+          this.wj = this.data.output.result1
+        })
+      }
+    },
+      handle1(){
         var v = this.data.input3
         if ((this.dl * 1) === this.data.input3) {
           this.$confirm('转换正确!', '提示', {
@@ -104,7 +130,6 @@ export default {
             type: 'success'
           }).then(() => {
           })
-          this.isType = false
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -114,13 +139,13 @@ export default {
           })
         }
       }
-
-    },
   }
 
 }
 </script>
 
 <style scoped>
-
+  .properties{
+    margin-left: 10px;
+  }
 </style>

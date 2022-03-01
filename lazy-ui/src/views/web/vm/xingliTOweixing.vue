@@ -15,19 +15,31 @@
         </div>
       </el-card>
     </div>
+    <el-card style="margin:10px 0">
+      <div class="siz">
+        接收机接收参数：
+        <el-input  
+          v-model="data.input"
+          style="width: 260px"
+          clearable/>
+        <el-button @click="refresh" style="margin-left:10px;">刷新</el-button>
+      </div>
+    </el-card>
     <el-card>
       <div>
         <!--          <p>ps:{{ isTime ? '请将格里高利时转换为儒略日后进行输入' : '请将儒略日转换为格里高利时后进行输入' }}</p>-->
         <el-form ref="form" :model="form" size="medium" label-width="100px">
           <el-row :gutter="24">
             <el-col :span="12">
-              <el-form-item label="接收机接收参数" prop="time" label-width="310px" style="width: 100%">
-                <el-input  v-model="data.input"
-                          placeholder="563624175"
-                          clearable/>
-              </el-form-item>
+              <!-- <el-form-item label="接收机接收参数" prop="time" label-width="310px" style="width: 100%;" >
+                <el-input  
+                  v-model="data.input"
+                  placeholder="563624175"
+                  clearable/>
+                <el-button @click="refresh">刷新</el-button>
+              </el-form-item> -->
 
-              <el-form-item  label="t时刻与参考时刻的时间差" prop="tTime" label-width="300px" style="width: 1000px">
+              <el-form-item  label="t时刻与参考时刻的时间差" prop="type" label-width="300px" style="width: 1000px" >
                 <el-col :span="22">
                   <el-input v-model="form.tTime" :style="{width: '100%'}"
                             :disabled="isTime1"
@@ -40,7 +52,7 @@
               </el-form-item>
 
 
-              <el-form-item  label="参考时刻的长半轴" prop="tTime13" label-width="300px" style="width: 1000px">
+              <el-form-item  label="参考时刻的长半轴" prop="type" label-width="300px" style="width: 1000px">
                 <el-col :span="22">
                   <el-input v-model="form.ckTime" :style="{width: '100%'}"
                             :disabled="isTime2"
@@ -53,7 +65,7 @@
               </el-form-item>
 
 
-              <el-form-item  label="t时刻的长半轴" prop="wTime" label-width="300px" style="width: 1000px">
+              <el-form-item  label="t时刻的长半轴" prop="type" label-width="300px" style="width: 1000px">
                 <el-col :span="22">
                   <el-input v-model="form.wTime" :style="{width: '100%'}"
                             :disabled="isTime3"
@@ -66,7 +78,7 @@
               </el-form-item>
 
 
-              <el-form-item  label="参考时刻平均运动角速率" prop="wxTime" label-width="300px" style="width: 1000px">
+              <el-form-item  label="参考时刻平均运动角速率" prop="type" label-width="300px" style="width: 1000px">
                 <el-col :span="22">
                   <el-input v-model="form.wxTime" :style="{width: '100%'}"
                             :disabled="isTime4"
@@ -226,7 +238,7 @@ export default {
   name: "xingliTOweixing",
   data() {
     return {
-      form: {},
+      form: {tTime:'',ckTime:'',wTime:'',wxTime:'',},
       answer: 0,
       active: 0,
       exData: {},
@@ -273,6 +285,43 @@ export default {
     })
   },
   methods: {
+    //刷新按钮
+    
+    refresh(){
+       exp6_BDCS_XL().then(response => {
+      console.log(response)
+      this.data = response.data
+    }) 
+    Object.assign(this.$data.form, this.$options.data().form) 
+      this.isTime1 = false
+      this.isTime2 = true
+      this.isTime3 = true
+      this.isTime4 = true
+      this.isTime5 = true
+      this.isTime6 = true
+      this.isTime7 = true
+      this.isTime8 = true
+      this.isTime9 = true
+      this.isTime10 = true
+      this.isTime11 = true
+      this.isTime12 = true
+      this.isTime13 = true
+      this.isTime14 = true
+      this.lisTime1 = false
+      this.lisTime2 = false
+      this.lisTime3 = false
+      this.lisTime4 = false
+      this.lisTime5 = false
+      this.lisTime6 = false
+      this.lisTime7 = false
+      this.lisTime8 = false
+      this.lisTime9 = false
+      this.lisTime10 = false
+      this.lisTime11 = false
+      this.lisTime12 = false
+      this.lisTime13 = false
+      this.lisTime14 = false
+    },
     handle(){
       if (!this.isTime1) {
         var v = this.data.output.result1
@@ -678,5 +727,5 @@ export default {
 </script>
 
 <style scoped>
-
+  
 </style>

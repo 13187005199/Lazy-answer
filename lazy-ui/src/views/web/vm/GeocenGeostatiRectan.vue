@@ -19,16 +19,16 @@
     <el-card>
       <span v-if="isType">
         地心地固直角坐标系:
-        <el-input v-model="dxdgzj.X"  style="width: 170px"/>
-        <el-input v-model="dxdgzj.Y"  style="width: 170px"/>
-        <el-input v-model="dxdgzj.Z"  style="width: 170px"/>
+        <el-input v-model="dxdgzj.X"  style="width: 240px"/>
+        <el-input v-model="dxdgzj.Y"  style="width: 240px"/>
+        <el-input v-model="dxdgzj.Z"  style="width: 240px"/>
         <el-button @click="generateData">刷新</el-button>
       </span>
       <span v-else>
         大地坐标系:
-        <el-input v-model="BLHToXYZ.input.B" style="width: 170px"/>
-        <el-input v-model="BLHToXYZ.input.L" style="width: 170px"/>
-        <el-input v-model="BLHToXYZ.input.H" style="width: 170px"/>
+        <el-input v-model="BLHToXYZ.input.B" style="width: 240px"/>
+        <el-input v-model="BLHToXYZ.input.L" style="width: 240px"/>
+        <el-input v-model="BLHToXYZ.input.H" style="width: 240px"/>
       </span>
     </el-card>
     <el-card class="card" style="margin-top: 10px">

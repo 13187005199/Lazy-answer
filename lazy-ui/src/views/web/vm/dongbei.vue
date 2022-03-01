@@ -16,33 +16,55 @@
       </el-card>
     </div>
     <el-card>
-      <span v-if="isType">地心地固直角坐标系:{{ XYZ2ENUDATA.input.X }},{{ XYZ2ENUDATA.input.Y }},{{ XYZ2ENUDATA.input.Z }}</span>
-      <span v-else>大地坐标系:{{ XYZ2ENUDATA.input2.B }},{{ XYZ2ENUDATA.input2.H }},{{ XYZ2ENUDATA.input2.L }}</span>
+        <div class="user" style="margin-top: 20px;">
+          地心地固直角坐标系：
+          <el-input v-model="XYZ2ENUDATA.input.X " style="width: 220px"/>
+          <el-input v-model="XYZ2ENUDATA.input.Y " style="width: 220px"/>
+          <el-input v-model="XYZ2ENUDATA.input.Z " style="width: 220px"/>
+        </div>
+        <div class="frequency" style="margin-top: 20px;margin-left: 65px;">
+          大地坐标系：
+          <el-input v-model="XYZ2ENUDATA.input2.B " style="width: 220px"/>
+          <el-input v-model="XYZ2ENUDATA.input2.H " style="width: 220px"/>
+          <el-input v-model="XYZ2ENUDATA.input2.L " style="width: 220px"/>
+          <el-button @click="refresh" class="properties">刷新</el-button>
+        </div>
+      <!-- <span v-if="isType">地心地固直角坐标系:{{ XYZ2ENUDATA.input.X }},{{ XYZ2ENUDATA.input.Y }},{{ XYZ2ENUDATA.input.Z }}</span>
+      <span v-else>大地坐标系:{{ XYZ2ENUDATA.input2.B }},{{ XYZ2ENUDATA.input2.H }},{{ XYZ2ENUDATA.input2.L }}</span> -->
     </el-card>
-    <el-card v-if="isType" class="card" style="margin-top: 10px">
+    <el-card  class="card" style="margin-top: 10px">
       <p>ps:请将地心地固直角坐标系转换成大地坐标系</p>
-      <div style="text-align: center">
+      <div >
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">
             <el-row :gutter="24">
               <el-col :span="24">
-                <el-form-item label="大地坐标系" prop="time">
-                  <el-input :style="{width: '100%'}" placeholder="大地坐标系" ref="ddzb" v-model="ddzb"></el-input>
+                <el-form-item :disabled="isType" label="大地坐标系" prop="time">
+                  <el-input :style="{width: '50%'}" placeholder="大地坐标系" ref="ddzb" v-model="ddzb"></el-input>
+                  <el-button type="primary" @click="handle" class="properties">
+                    提交
+                  </el-button>
+                </el-form-item>
+                <el-form-item :disabled="plsType" label="东北天坐标" prop="time">
+                  <el-input :style="{width: '50%'}" placeholder="东北天坐标系" ref="dbzb" v-model="dbzb"></el-input>
+                  <el-button type="primary" @click="handle1" class="properties">
+                    提交
+                  </el-button>
                 </el-form-item>
               </el-col>
             </el-row>
-            <el-row>
+            <!-- <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
                 <el-button type="primary" @click="handle">
                   提交
                 </el-button>
               </el-col>
-            </el-row>
+            </el-row> -->
           </el-form>
         </div>
       </div>
     </el-card>
-    <el-card v-else class="card" style="margin-top: 10px">
+    <!-- <el-card v-else class="card" style="margin-top: 10px">
       <p>ps:大地坐标系转换为东北天坐标系</p>
       <div style="text-align: center">
         <div style="padding-top: 25px;">
@@ -64,7 +86,7 @@
           </el-form>
         </div>
       </div>
-    </el-card>
+    </el-card> -->
   </div>
 </template>
 
@@ -77,10 +99,11 @@ export default {
   data() {
     return {
       exData: {},
-      isType: true,
+      isType: false,
+      plsType:true,
       XYZ2ENUDATA: {},
       ddzb: '',
-      dbzb: ''
+      dbzb: '',
     }
   },
   created() {
@@ -94,9 +117,17 @@ export default {
     })
   },
   methods: {
+    //刷新按钮
+    refresh(){
+       XYZ2ENU().then(response => {
+        console.log(response)
+        this.XYZ2ENUDATA = response.data
+      })
+      this.ddzb = ''
+      this.dbzb = ''
+    },
     handle() {
       var v = this.XYZ2ENUDATA.input2.B + "," + this.XYZ2ENUDATA.input2.L + "," + this.XYZ2ENUDATA.input2.H
-      console.log('v',v)
       if (this.ddzb === v) {
         this.$confirm('转换正确!', '提示', {
           confirmButtonText: '下一题',
@@ -137,5 +168,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .properties{
+    margin-left: 10px;
+  }
 </style>

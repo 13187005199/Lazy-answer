@@ -201,22 +201,7 @@ export default {
         }
       }
     },
-    //切换
-    marks(){
-      this.isbacks=true;
-      this.isbackse=false;
-      this.ismacks=false;
-    },
-    markse(){
-      this.isbacks=false;
-      this.isbackse=true;
-      this.ismacks=false;
-    },
-    marksa(){
-      this.isbacks=false;
-      this.isbackse=false;
-      this.ismacks=true;
-    }
+    
   },
 }
 </script>

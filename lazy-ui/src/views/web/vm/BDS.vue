@@ -16,14 +16,30 @@
       </el-card>
     </div>
     <el-card>
-      <span>卫星位置：<span style="color: #ffb061">{{ data.input.X }},{{ data.input.Y }},{{ data.input.Z }}</span></span>
+      <div class="satellite">
+        卫星位置：
+        <el-input v-model="data.input.X " style="width: 220px"/>
+        <el-input v-model="data.input.Y " style="width: 220px"/>
+        <el-input v-model="data.input.Z " style="width: 220px"/>
+      </div>
+      <div class="user" style="margin-top: 20px;">
+        用户位置：
+        <el-input v-model="data.input2.X " style="width: 220px"/>
+        <el-input v-model="data.input2.Y " style="width: 220px"/>
+        <el-input v-model="data.input2.Z " style="width: 220px"/>
+      </div>
+      <div class="frequency" style="margin-top: 20px;">
+        频点参数 B1：
+        <el-input v-model="data.output.result1 " style="width: 220px"/>
+        <el-button @click="refresh">刷新</el-button>
+      </div>
     </el-card>
-    <el-card style="margin-top: 10px">
+    <!-- <el-card style="margin-top: 10px">
       <span>用户位置:<span style="color: #ffb061">{{ data.input2.X }},{{ data.input2.Y }},{{ data.input2.Z }}</span></span>
     </el-card>
     <el-card style="margin-top: 10px">
       <span>频点参数 B1:<span style="color: #ffb061">{{ data.output.result1 }}</span></span>
-    </el-card>
+    </el-card> -->
     <el-card class="card" style="margin-top: 10px">
       <div style="text-align: center">
         <div style="padding-top: 25px;">
@@ -173,6 +189,25 @@ export default {
     })
   },
   methods: {
+    refresh(){
+     exp9_bds_dianLiCeng().then(response => {
+      this.data = response.data
+    })
+    this.form = {}
+    this.heightFlag = false
+    this. fwjFlag = true
+    this.dxzjFlag = true
+    this. ccdFlag = true
+    this.dlFlag = true
+    this.ccdjwdFlag = true
+    this.aiFlag = true
+    this.aoFlag = true
+    this.vtecFlag = true
+    this.tyFlag = true
+    this.tyvFlag = true
+    this.yzFlag = true
+    this.bdsFlag = true
+    },
     handle() {
       if (!this.heightFlag) {
         var linheight = this.data.output.result1

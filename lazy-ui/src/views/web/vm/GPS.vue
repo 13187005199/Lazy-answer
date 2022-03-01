@@ -16,10 +16,24 @@
       </el-card>
     </div>
     <el-card>
-      <span>卫星位置：{{ data.input.X }},{{ data.input.Y }},{{ data.input.Z }}</span>
+      <div class="satellite">
+        卫星位置：
+        <el-input v-model="data.input.X " style="width: 220px"/>
+        <el-input v-model="data.input.Y " style="width: 220px"/>
+        <el-input v-model="data.input.Z " style="width: 220px"/>
+      </div>
+      <div class="user" style="margin-top: 20px;">
+        用户位置：
+        <el-input v-model="data.input2.X " style="width: 220px"/>
+        <el-input v-model="data.input2.Y " style="width: 220px"/>
+        <el-input v-model="data.input2.Z " style="width: 220px"/>
+        <el-button @click="refresh">刷新</el-button>
+      </div>
+      
+      <!-- <span>卫星位置：{{ data.input.X }},{{ data.input.Y }},{{ data.input.Z }}</span>
     </el-card>
     <el-card style="margin-top: 10px">
-      <span>用户位置：{{ data.input2.X }},{{ data.input2.Y }},{{ data.input2.Z }}</span>
+      <span>用户位置：{{ data.input2.X }},{{ data.input2.Y }},{{ data.input2.Z }}</span> -->
     </el-card>
     <el-card class="card" style="margin-top: 10px">
       <div style="text-align: center">
@@ -181,6 +195,23 @@ export default {
     })
   },
   methods: {
+    //刷新页面
+    refresh(){
+      exp8_gps_dianLiCeng().then(response => {
+      this.data = response.data
+    })
+    Object.assign(this.$data.form, this.$options.data().form)
+    this.form.heightAnswer = false
+    this.heightFlag = false,
+    this.fwjFlag = true
+    this.ccdFlag = true
+    this.dljwdFlag = true
+    this.A2Flag = true
+    this.A4Flag = true
+    this.czdlFlag = true
+    this.tyFlag = true
+    this.yinziFlag = true
+    },
     handle() {
       if (!this.heightFlag) {
         var v = this.data.output.result1

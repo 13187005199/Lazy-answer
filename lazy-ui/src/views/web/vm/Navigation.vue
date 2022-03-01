@@ -16,34 +16,50 @@
       </el-card>
     </div>
     <el-card>
-      <span>BDT： {{ data.input }}、GPST： {{ data.input2 }}</span>
+      <div class="navigation">
+        BDT：<el-input  
+          v-model="data.input"
+          style="width:300px;margin-right:10px;"
+          clearable/>
+        GPST：<el-input  
+          v-model="data.input2"
+          style="width:300px;"
+          clearable/>
+          <el-button @click="refresh" class="properties">刷新</el-button>
+      </div>
     </el-card>
     <el-card class="card" style="margin-top: 10px">
       <p>ps:请输入BDT钟差与提示GPST钟差</p>
-      <div style="text-align: center">
+      <div>
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">
             <el-row :gutter="24">
               <el-col :span="24">
                 <el-form-item label="BDT钟差" prop="time">
-                  <el-input :style="{width: '100%'}" ref="BDT" v-model="BDT" placeholder="BDT钟差"></el-input>
+                  <el-input :style="{width: '50%'}" ref="BDT" v-model="BDT" placeholder="BDT钟差"></el-input>
+                  <el-button type="primary" @click="handle" class="properties">
+                    提交
+                  </el-button>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="24">
               <el-col :span="24">
                 <el-form-item label="GPST钟差" prop="time">
-                  <el-input :style="{width: '100%'}" ref="GPST" :disabled="isType" v-model="GPST" placeholder="GPST钟差"></el-input>
+                  <el-input :style="{width: '50%'}" ref="GPST" v-model="GPST" placeholder="GPST钟差"></el-input>
+                  <el-button type="primary" @click="handle1" class="properties">
+                    提交
+                  </el-button>
                 </el-form-item>
               </el-col>
             </el-row>
-            <el-row>
+            <!-- <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
                 <el-button type="primary" @click="handle">
                   提交
                 </el-button>
               </el-col>
-            </el-row>
+            </el-row> -->
           </el-form>
         </div>
       </div>
@@ -59,7 +75,6 @@ export default {
   name: "Navigation",
   data() {
     return {
-      isType: true,
       data: {},
       exData: {},
       BDT:null,
@@ -77,8 +92,15 @@ export default {
     })
   },
   methods:{
+    //刷新按钮
+    refresh(){
+      exp7_dianwen().then(response => {
+        this.data = response.data
+      })
+      this.BDT=''
+        this.GPST=''
+    },
     handle(){
-      if (this.isType){
         var v = this.data.output.result1
         if ((this.BDT*1) ===this.data.output.result1){
           //this.notifySuccess("正确", "转换正确")
@@ -86,7 +108,6 @@ export default {
             confirmButtonText: '下一题',
             type: 'success'
           }).then(() => {
-            this.isType=false
             this.$refs.GPST.focus();
           })
         } else {
@@ -98,16 +119,13 @@ export default {
             this.BDT = this.data.output.result1
           })
         }
-      }else {
-        var v = this.data.output.result2
+      },
+      handle1(){
         if ((this.GPST*1) ===this.data.output.result2){
           this.$confirm('转换正确!', '提示', {
             confirmButtonText: '完成',
             type: 'success'
           }).then(() => {
-            //this.showBj = true;
-            this.isType=false
-            //this.$refs.GPST.focus();
             this.BDT=''
             this.GPST=''
           })
@@ -122,11 +140,41 @@ export default {
           })
         }
       }
-    }
+      // else {
+      //   var v = this.data.output.result2
+      //   if ((this.GPST*1) ===this.data.output.result2){
+      //     this.$confirm('转换正确!', '提示', {
+      //       confirmButtonText: '完成',
+      //       type: 'success'
+      //     }).then(() => {
+      //       //this.showBj = true;
+      //       this.isType=false
+      //       //this.$refs.GPST.focus();
+      //       this.BDT=''
+      //       this.GPST=''
+      //     })
+
+      //   } else {
+      //     this.$refs.GPST.focus();
+      //     this.$confirm('转换错误，正确答案为：'+ v, '提示',{
+      //       confirmButtonText: '确定',
+      //       type:'warning'
+      //     }).then(()=>{
+      //       this.GPST = this.data.output.result2
+      //     })
+      //   }
+      // }
   }
 }
 </script>
 
 <style scoped>
-
+ .navigation{
+    display: flex;
+    line-height: 40px;
+    padding: 0 15px;
+ }
+ .properties{
+   margin-left: 10px;
+ }
 </style>
