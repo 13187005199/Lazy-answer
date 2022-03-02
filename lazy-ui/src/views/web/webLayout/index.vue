@@ -68,11 +68,11 @@ export default {
           url: '/web/vm/vmIndex',
           name: '虚拟实验'
         },
-        {
-          index: 2,
-          url: '',
-          name: '用户中心'
-        },
+        // {
+        //   index: 2,
+        //   url: '',
+        //   name: '用户中心'
+        // },
       ]
     }
   },

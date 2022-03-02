@@ -36,12 +36,12 @@
       <span>用户位置：{{ data.input2.X }},{{ data.input2.Y }},{{ data.input2.Z }}</span> -->
     </el-card>
     <el-card class="card" style="margin-top: 10px">
-      <div style="text-align: center">
+      <div>
         <div style="padding-top: 25px;">
           <el-form ref="form" v-model="form" size="medium" label-width="100px">
             <el-row :gutter="24">
               <el-col :span="10">
-                <el-row>
+                <el-row :gutter="10">
                   <el-col :span="22">
                     <el-form-item prop="time">
                       <el-input :style="{width: '100%'}" :disabled="heightFlag" v-model="form.height"
@@ -49,12 +49,13 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="2">
-                    <i v-if="form.heightAnswer" style="color: #00ff80" class="el-icon-success"></i>
+                    <!-- <i v-if="form.heightAnswer" style="color: #00ff80" class="el-icon-success"></i> -->
+                    <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
                   </el-col>
                 </el-row>
               </el-col>
               <el-col :span="10">
-                <el-row>
+                <el-row :gutter="10">
                   <el-col :span="22">
                     <el-form-item prop="time">
                       <el-input :style="{width: '100%'}" :disabled="fwjFlag" v-model="form.fwj"
@@ -62,80 +63,87 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="2">
-                    <i v-if="form.fwjAnswer" style="color: #00ff80" class="el-icon-success"></i>
+                    <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                    <!-- <i v-if="form.fwjAnswer" style="color: #00ff80" class="el-icon-success"></i> -->
                   </el-col>
                 </el-row>
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="ccdFlag" v-model="form.ccd"
                             placeholder="计算刺穿点" ref="ccd"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.ccdAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <!-- <i v-if="form.ccdAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
+                <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="A2Flag" ref="A2" v-model="form.A2"
                             placeholder="A2"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.a2Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                <!-- <i v-if="form.a2Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="A4Flag" ref="A4" v-model="form.A4"
                             placeholder="A4"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.a4Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
+                <!-- <i v-if="form.a4Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="czdlFlag" ref="czdl" v-model="form.czdl"
                             placeholder="垂直电离层延迟改正值"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.czdlAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <!-- <i v-if="form.czdlAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
+                <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="tyFlag" ref="ty" v-model="form.ty"
                             placeholder="根据投影函数计算斜路径上的电离层延迟改正值"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.tyAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
+                <!-- <i v-if="form.tyAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
-            <el-row :gutter="24">
-              <el-col :span="23">
+            <el-row :gutter="10">
+              <el-col :span="19">
                 <el-form-item prop="time">
                   <el-input :style="{width: '100%'}" :disabled="yinziFlag" ref="yinzi" v-model="form.yinzi"
                             placeholder="乘以频率转换因子"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="1">
-                <i v-if="form.yinziAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i>
+              <el-col :span="5">
+                <!-- <i v-if="form.yinziAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
+                <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
-                <el-button type="primary" @click="handle">
+                <el-button type="primary" @click="handle" v-if="btn9">
                   提交
                 </el-button>
               </el-col>
@@ -180,7 +188,16 @@ export default {
         czdl: null,
         ty: null,
         yinzi: null,
-      }
+      },
+      btn1:true,
+      btn2:false,
+      btn3:false,
+      btn4:false,
+      btn5:false,
+      btn6:false,
+      btn7:false,
+      btn8:false,
+      btn9:false,
     }
   },
   created() {
@@ -211,6 +228,15 @@ export default {
     this.czdlFlag = true
     this.tyFlag = true
     this.yinziFlag = true
+    this.btn1 = true
+    this.btn2 = false
+    this.btn3 = false
+    this.btn4 = false
+    this.btn5 = false
+    this.btn6 = false
+    this.btn7 = false
+    this.btn8 = false
+    this.btn9 = false
     },
     handle() {
       if (!this.heightFlag) {
@@ -224,7 +250,8 @@ export default {
           })
           this.fwjFlag = false
           this.heightFlag = true
-          this.form.heightAnswer = true
+          this.btn1 = false
+          this.btn2 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -244,7 +271,8 @@ export default {
           })
           this.ccdFlag = false
           this.fwjFlag = true
-          this.form.fwjAnswer = true
+          this.btn2 = false
+          this.btn3 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -264,7 +292,8 @@ export default {
           })
           this.A2Flag = false
           this.ccdFlag = true
-          this.form.ccdAnswer = true
+          this.btn3 = false
+          this.btn4 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -284,7 +313,8 @@ export default {
           })
           this.A2Flag = true
           this.A4Flag = false
-          this.form.a2Answer = true
+          this.btn4 = false
+          this.btn5 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -304,7 +334,8 @@ export default {
           })
           this.A4Flag = true
           this.czdlFlag = false
-          this.form.a4Answer = true
+          this.btn5 = false
+          this.btn6 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -326,7 +357,8 @@ export default {
           })
           this.czdlFlag = true
           this.tyFlag = false
-          this.form.czdlAnswer = true
+          this.btn6 = false
+          this.btn7 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -346,7 +378,8 @@ export default {
           })
           this.tyFlag = true
           this.yinziFlag = false
-          this.form.tyAnswer = true
+          this.btn7 = false
+          this.btn8 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -366,6 +399,8 @@ export default {
           })
           this.form.yinziAnswer = true
           this.yinziFlag = true
+          this.btn8 = false
+          this.btn9 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',

@@ -124,6 +124,8 @@ export default {
         this.dxdgzj = response.data.input
         this.output = response.data.output
       })
+      this.ddzbx = {B:'',L:'',H:''}
+      this.dxdgzbx = {X:'',Y:'',Z:''}
     },
     submitGC() {
       var system = this.output.B + "," + this.output.L + "," + this.output.H

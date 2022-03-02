@@ -33,7 +33,7 @@
       <span v-else>大地坐标系:{{ XYZ2ENUDATA.input2.B }},{{ XYZ2ENUDATA.input2.H }},{{ XYZ2ENUDATA.input2.L }}</span> -->
     </el-card>
     <el-card  class="card" style="margin-top: 10px">
-      <p>ps:请将地心地固直角坐标系转换成大地坐标系</p>
+      <p style="font-size: 14px;font-weight: 600;">请将地心地固直角坐标系转换成大地坐标系</p>
       <div >
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">

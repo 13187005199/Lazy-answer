@@ -62,6 +62,7 @@
                                  clearable/>
                      </el-col>
                      <el-col :span="2">
+                       <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
                        <!-- <i v-if="isTime1" style="color: #00ff80" class="el-icon-success"></i>
                        <i v-else style="color: red" class="el-icon-error"></i> -->
                      </el-col>
@@ -75,6 +76,7 @@
                                  clearable/>
                      </el-col>
                      <el-col :span="2">
+                       <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
                        <!-- <i v-if="isTime2" style="color: #00ff80" class="el-icon-success"></i>
                        <i v-else style="color: red" class="el-icon-error"></i> -->
                      </el-col>
@@ -89,6 +91,7 @@
                                   clearable/>
                       </el-col>
                      <el-col :span="2">
+                       <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime3" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -102,6 +105,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime4" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -115,6 +119,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime5" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -127,6 +132,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime6" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -138,6 +144,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime7" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -149,6 +156,7 @@
                                 clearable/>
                       </el-col>
                      <el-col :span="2">
+                       <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime8" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -161,6 +169,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn9" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime9" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -173,6 +182,7 @@
                                 clearable/>
                       </el-col>
                      <el-col :span="2">
+                       <el-button class="attribute" v-if="btn10" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime10" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -185,6 +195,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
+                        <el-button class="attribute" v-if="btn11" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime11" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -198,6 +209,7 @@
                                 clearable/>
                     </el-col> 
                     <el-col :span="2">
+                      <el-button class="attribute" v-if="btn12" @click="handle">下一题</el-button>
                         <!-- <i v-if="isTime12" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -241,7 +253,19 @@ export default {
       isTime9: true,
       isTime10: true,
       isTime11: true,
-      isTime12: true
+      isTime12: true,
+      btn1:true,
+      btn2:false,
+      btn3:false,
+      btn4:false,
+      btn5:false,
+      btn6:false,
+      btn7:false,
+      btn8:false,
+      btn9:false,
+      btn10:false,
+      btn11:false,
+      btn12:false,
     }
   },
   created() {
@@ -261,18 +285,30 @@ export default {
       this.dataVX = response.data
     })
     this.form = {}
-      this.isTime1 = false,
-      this.isTime2 = true,
-      this.isTime3 = true,
-      this.isTime4 = true,
-      this.isTime5 = true,
-      this.isTime6 = true,
-      this.isTime7 = true,
-      this.isTime8 = true,
-      this.isTime9 = true,
-      this.isTime10 = true,
-      this.isTime11 = true,
+      this.isTime1 = false
+      this.isTime2 = true
+      this.isTime3 = true
+      this.isTime4 = true
+      this.isTime5 = true
+      this.isTime6 = true
+      this.isTime7 = true
+      this.isTime8 = true
+      this.isTime9 = true
+      this.isTime10 = true
+      this.isTime11 = true
       this.isTime12 = true
+      this.btn1 = true
+      this.btn2 = false
+      this.btn3 = false
+      this.btn4 = false
+      this.btn5 = false
+      this.btn6 = false
+      this.btn7 = false
+      this.btn8 = false
+      this.btn9 = false
+      this.btn10 = false
+      this.btn11 = false
+      this.btn12 = false
     },
     handle(){
       if(!this.isTime1){
@@ -286,6 +322,8 @@ export default {
           })
           this.isTime1 = true
           this.isTime2 = false
+          this.btn1 = false
+          this. btn2 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -305,6 +343,8 @@ export default {
           })
           this.isTime2 = true
           this.isTime3 = false
+          this.btn2 = false
+          this. btn3 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -324,6 +364,8 @@ export default {
           })
           this.isTime3 = true
           this.isTime4 = false
+           this.btn3 = false
+          this. btn4 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -343,6 +385,8 @@ export default {
           })
           this.isTime4 = true
           this.isTime5 = false
+          this.btn4 = false
+          this. btn5 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -362,6 +406,8 @@ export default {
           })
           this.isTime5 = true
           this.isTime6 = false
+          this.btn5 = false
+          this. btn6 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -381,6 +427,8 @@ export default {
           })
           this.isTime6 = true
           this.isTime7 = false
+          this.btn6 = false
+          this. btn7 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -400,6 +448,8 @@ export default {
           })
           this.isTime7 = true
           this.isTime8 = false
+          this.btn7 = false
+          this. btn8 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -419,6 +469,8 @@ export default {
           })
           this.isTime8 = true
           this.isTime9 = false
+          this.btn8 = false
+          this. btn9 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -438,6 +490,8 @@ export default {
           })
           this.isTime9 = true
           this.isTime10 = false
+          this.btn9 = false
+          this. btn10 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -457,6 +511,8 @@ export default {
           })
           this.isTime10 = true
           this.isTime11 = false
+          this.btn10 = false
+          this. btn11 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -476,6 +532,8 @@ export default {
           })
           this.isTime11 = true
           this.isTime12 = false
+          this.btn11 = false
+          this. btn12 = true
         }else{
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',

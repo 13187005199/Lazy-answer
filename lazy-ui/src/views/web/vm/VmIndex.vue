@@ -3,7 +3,7 @@
     <div  v-for="(item,index) in exList">
       <el-col :span="6">
         <el-card id="backs" 
-        style="height: 20vh;position: relative;border-radius: 10px;margin: 5px;" >
+        style="height: 25vh;position: relative;border-radius: 10px;margin: 5px;" >
           <div class="card-title1">
             {{ item.title }}
           </div>
@@ -11,7 +11,7 @@
             {{ item.intro }}
           </div>
           <div class="card-btn btn-bg1" @click="toPage(item)">
-            <el-button type="primary" plain>查看详情</el-button>
+            <el-button type="primary" size="small" plain>查看详情</el-button>
           </div>
           <div class="card-img">
             <img width="100%">
@@ -231,7 +231,7 @@ export default {
   position: absolute;
   text-align: center;
   right: 5%;
-  bottom: 20px;
+  bottom: 5%;
 }
 
 .card-img {

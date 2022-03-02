@@ -47,7 +47,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime1" style="color: #00ff80" class="el-icon-success"></i>
+                  <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
+                  <!-- <i v-if="lisTime1" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
 
@@ -60,7 +61,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime2" style="color: #00ff80" class="el-icon-success"></i>
+                  <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                  <!-- <i v-if="lisTime2" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
 
@@ -73,7 +75,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime3" style="color: #00ff80" class="el-icon-success"></i>
+                  <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
+                  <!-- <i v-if="lisTime3" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
 
@@ -86,7 +89,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime4" style="color: #00ff80" class="el-icon-success"></i>
+                  <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                  <!-- <i v-if="lisTime4" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
 
@@ -99,7 +103,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if ="lisTime5" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if ="lisTime5" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
 
@@ -112,7 +117,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime6" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime6" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
 
@@ -125,7 +131,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime7" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime7" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
 
@@ -137,7 +144,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime8" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime8" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算真近点角" prop="zjjTime" label-width="300px" style="width: 1000px">
@@ -148,7 +156,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime9" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime9" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn9" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算纬度幅角" prop="wdfjTime" label-width="300px" style="width: 1000px">
@@ -159,7 +168,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime10" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime10" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn10" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算径向距离" prop="jjjlTime" label-width="300px" style="width: 1000px">
@@ -170,7 +180,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime11" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime11" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn11" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算卫星在轨道平面内的坐标" prop="pmzvTime" label-width="300px"
@@ -182,7 +193,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime12" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime12" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn12" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算改正后的升交点经度" prop="sjdTime" label-width="300px"
@@ -194,7 +206,8 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime13" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime13" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn13" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
               <!--              <el-form-item v-if="isTime11" label="计算参考时刻的轨道倾角" prop="gdqjTime" label-width="500px"  style="width: 1000px">
@@ -212,14 +225,15 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <i v-if="lisTime14" style="color: #00ff80" class="el-icon-success"></i>
+                  <!-- <i v-if="lisTime14" style="color: #00ff80" class="el-icon-success"></i> -->
+                  <el-button class="attribute" v-if="btn14" @click="handle">下一题</el-button>
                 </el-col>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="24" :style="{ textAlign: 'center' }">
-              <el-button type="primary" @click="handle">
+              <el-button type="primary" @click="handle" v-if="btn15">
                 提交
               </el-button>
             </el-col>
@@ -257,20 +271,21 @@ export default {
       isTime12: true,
       isTime13: true,
       isTime14: true,
-      lisTime1:false,
-      lisTime2:false,
-      lisTime3:false,
-      lisTime4:false,
-      lisTime5:false,
-      lisTime6:false,
-      lisTime7:false,
-      lisTime8:false,
-      lisTime9:false,
-      lisTime10:false,
-      lisTime11:false,
-      lisTime12:false,
-      lisTime13:false,
-      lisTime14:false,
+      btn1:true,
+      btn2:false,
+      btn3:false,
+      btn4:false,
+      btn5:false,
+      btn6:false,
+      btn7:false,
+      btn8:false,
+      btn9:false,
+      btn10:false,
+      btn11:false,
+      btn12:false,
+      btn13:false,
+      btn14:false,
+      btn15:false
     }
   },
   created() {
@@ -307,20 +322,21 @@ export default {
       this.isTime12 = true
       this.isTime13 = true
       this.isTime14 = true
-      this.lisTime1 = false
-      this.lisTime2 = false
-      this.lisTime3 = false
-      this.lisTime4 = false
-      this.lisTime5 = false
-      this.lisTime6 = false
-      this.lisTime7 = false
-      this.lisTime8 = false
-      this.lisTime9 = false
-      this.lisTime10 = false
-      this.lisTime11 = false
-      this.lisTime12 = false
-      this.lisTime13 = false
-      this.lisTime14 = false
+      this.btn1 = true
+      this.btn2 = false
+      this.btn3 = false
+      this.btn4 = false
+      this.btn5 = false
+      this.btn6 = false
+      this.btn7 = false
+      this.btn8 = false
+      this.btn9 = false
+      this.btn10 = false
+      this.btn11 = false
+      this.btn12 = false
+      this.btn13 = false
+      this.btn14 = false
+      this.btn15 = false
     },
     handle(){
       if (!this.isTime1) {
@@ -334,7 +350,8 @@ export default {
           })
           this.isTime1 = true
           this.isTime2 = false
-          this.lisTime1 = true
+          this.btn1 = false
+          this.btn2 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -354,7 +371,8 @@ export default {
           })
           this.isTime2 = true
           this.isTime3 = false
-          this.lisTime2 = true
+          this.btn2 = false
+          this.btn3 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -374,7 +392,8 @@ export default {
           })
           this.isTime3 = true
           this.isTime4 = false
-          this.lisTime3 = true
+          this.btn3 = false
+          this.btn4 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -394,7 +413,8 @@ export default {
           })
           this.isTime4 = true
           this.isTime5 = false
-          this.lisTime4 = true
+         this.btn4 = false
+          this.btn5 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -414,7 +434,8 @@ export default {
           })
           this.isTime5 = true
           this.isTime6 = false
-          this.lisTime5 = true
+          this.btn5 = false
+          this.btn6 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -434,7 +455,8 @@ export default {
           })
           this.isTime6 = true
           this.isTime7 = false
-          this.lisTime6 = true
+          this.btn6 = false
+          this.btn7 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -454,7 +476,8 @@ export default {
           })
           this.isTime7 = true
           this.isTime8 = false
-          this.lisTime7 = true
+          this.btn7 = false
+          this.btn8 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -474,7 +497,8 @@ export default {
           })
           this.isTime8 = true
           this.isTime9 = false
-          this.lisTime8 = true
+          this.btn8 = false
+          this.btn9 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -494,7 +518,8 @@ export default {
           })
           this.isTime9 = true
           this.isTime10 = false
-          this.lisTime9 = true
+          this.btn9 = false
+          this.btn10 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -514,7 +539,8 @@ export default {
           })
           this.isTime10 = true
           this.isTime11 = false
-          this.lisTime10 = true
+          this.btn10 = false
+          this.btn11 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -534,7 +560,8 @@ export default {
           })
           this.isTime11 = true
           this.isTime12 = false
-          this.lisTime11 = true
+          this.btn11 = false
+          this.btn12 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -554,7 +581,8 @@ export default {
           })
           this.isTime12 = true
           this.isTime13 = false
-          this.lisTime12 = true
+          this.btn12 = false
+          this.btn13 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -574,7 +602,8 @@ export default {
           })
           this.isTime13 = true
           this.isTime14 = false
-          this.lisTime13 = true
+          this.btn13 = false
+          this.btn14 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',
@@ -594,6 +623,8 @@ export default {
           })
           this.isTime14 = true
           this.lisTime14 = true
+          this.btn14 = false
+          this.btn15 = true
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
             confirmButtonText: '确定',

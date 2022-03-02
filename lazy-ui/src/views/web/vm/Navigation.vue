@@ -29,7 +29,7 @@
       </div>
     </el-card>
     <el-card class="card" style="margin-top: 10px">
-      <p>ps:请输入BDT钟差与提示GPST钟差</p>
+      <p style="font-size: 14px;color: #cfcfcf;font-weight: 600;">请输入BDT钟差与提示GPST钟差</p>
       <div>
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">

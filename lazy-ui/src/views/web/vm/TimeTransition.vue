@@ -132,7 +132,7 @@ export default {
               this.active = 2
               this.notifySuccess("正确", "转换正确")
               this.randomDate()
-              this.rest();
+              // this.rest();
             } else {
               this.active = 2
               this.$confirm('转换错误，正确答案为：' +this.julianTime(this.form.time) , '提示', {
@@ -141,7 +141,7 @@ export default {
               }).then(() => {
                 this.form.julian = this.julianTime(this.form.time)
               })
-              this.rest();
+              // this.rest();
             }
           } else {
             let system = moment(this.julianToTime(this.form.julian)).format("YYYY-MM-DD HH:mm:ss")
@@ -151,7 +151,7 @@ export default {
             if (user === system) {
               this.active = 2
               this.notifySuccess("正确", "转换正确")
-              this.rest();
+              // this.rest();
               this.$set(this.form.julian, 'julian', this.randomJulianDate())
             } else {
               this.active = 2
@@ -161,7 +161,7 @@ export default {
               }).then(() => {
                 this.form.time = moment(this.julianToTime(this.form.julian)).format("YYYY-MM-DD HH:mm:ss")
               })
-              this.rest();
+              // this.rest();
             }
           }
         }

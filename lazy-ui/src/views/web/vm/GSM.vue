@@ -28,15 +28,15 @@
       <!-- <span>伪距:{{ data.input }}、TGD:{{ data.input2 }}</span> -->
     </el-card>
     <el-card class="card" style="margin-top: 10px">
-      <p v-if="isType">ps:计算各频点的伪距修正值，得到修正后的伪距</p>
-      <p v-else>ps:计算各频点的电离层延迟值</p>
+      <p style="font-size: 14px;font-weight: 600;">计算各频点的伪距修正值得到修正后的伪距,计算各频点的电离层延迟值</p>
+      <!-- <p v-else>计算各频点的电离层延迟值</p> -->
       <div>
         <div style="padding-top: 25px;">
           <el-form ref="form" size="medium" label-width="100px">
             <el-row :gutter="24">
               <el-col :span="24">
-                <el-form-item label="伪距" prop="time">
-                  <el-input  :style="{width: '50%'}"  v-model="wj" placeholder="伪距"></el-input>
+                <el-form-item label="修正后的伪距" prop="time">
+                  <el-input  :style="{width: '50%'}"  v-model="wj" placeholder="请输入修正后的伪距"></el-input>
                   <el-button type="primary" @click="handle" class="properties">
                     提交
                   </el-button>
@@ -46,7 +46,7 @@
             <el-row :gutter="24" >
               <el-col :span="24">
                 <el-form-item label="电离层延迟" prop="time">
-                  <el-input :style="{width: '50%'}" v-model="dl" placeholder="电离层延迟"></el-input>
+                  <el-input :style="{width: '50%'}" v-model="dl" placeholder="请输入电离层延迟"></el-input>
                   <el-button type="primary" @click="handle1" class="properties">
                     提交
                   </el-button>
