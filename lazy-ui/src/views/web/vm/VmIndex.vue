@@ -10,9 +10,7 @@
           <div class="card-conters">
             {{ item.intro }}
           </div>
-          <div class="card-btn btn-bg1" @click="toPage(item)">
-            <el-button type="primary" size="small" plain>查看详情</el-button>
-          </div>
+          <el-button class="card-btn btn-bg1" type="primary"  @click="toPage(item)" size="small" plain>查看详情</el-button>
           <div class="card-img">
             <img width="100%">
           </div>

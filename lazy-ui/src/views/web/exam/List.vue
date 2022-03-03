@@ -1,10 +1,16 @@
 <template>
   <div>
+     <el-alert
+        title="消息通知"
+        type="warning"
+         description="你的作业提交时间离截止时间还剩48小时"
+        style="margin-bottom:15px;">
+      </el-alert>
     <el-row :gutter="20">
       <el-col :span="5">
         <el-card style="cursor: pointer;margin-top: 1px" shadow="hover" v-for="(item,index) in courseList">
           <div @click="getExamList(item)" style="text-align:center;">
-            <span style="font-weight: 600">课程名称：{{ item.title }}</span>
+            <span style="font-weight: 600">{{ item.title }}</span>
           </div>
         </el-card>
       </el-col>
@@ -81,6 +87,7 @@ export default {
     getList() {
       listUserExam(this.queryParams).then(response => {
         this.listExams = response.rows
+        console.log('课题',this.listExams)
         this.total = response.total;
       })
     },

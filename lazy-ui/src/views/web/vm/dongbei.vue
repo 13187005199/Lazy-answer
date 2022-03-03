@@ -15,55 +15,148 @@
         </div>
       </el-card>
     </div>
-    <el-card>
-        <div class="user" style="margin-top: 20px;">
-          地心地固直角坐标系：
-          <el-input v-model="XYZ2ENUDATA.input.X " style="width: 220px"/>
-          <el-input v-model="XYZ2ENUDATA.input.Y " style="width: 220px"/>
-          <el-input v-model="XYZ2ENUDATA.input.Z " style="width: 220px"/>
-        </div>
-        <div class="frequency" style="margin-top: 20px;margin-left: 65px;">
-          大地坐标系：
-          <el-input v-model="XYZ2ENUDATA.input2.B " style="width: 220px"/>
-          <el-input v-model="XYZ2ENUDATA.input2.H " style="width: 220px"/>
-          <el-input v-model="XYZ2ENUDATA.input2.L " style="width: 220px"/>
-          <el-button @click="refresh" class="properties">刷新</el-button>
-        </div>
-      <!-- <span v-if="isType">地心地固直角坐标系:{{ XYZ2ENUDATA.input.X }},{{ XYZ2ENUDATA.input.Y }},{{ XYZ2ENUDATA.input.Z }}</span>
-      <span v-else>大地坐标系:{{ XYZ2ENUDATA.input2.B }},{{ XYZ2ENUDATA.input2.H }},{{ XYZ2ENUDATA.input2.L }}</span> -->
-    </el-card>
-    <el-card  class="card" style="margin-top: 10px">
-      <p style="font-size: 14px;font-weight: 600;">请将地心地固直角坐标系转换成大地坐标系</p>
-      <div >
-        <div style="padding-top: 25px;">
-          <el-form ref="form" size="medium" label-width="100px">
-            <el-row :gutter="24">
-              <el-col :span="24">
-                <el-form-item :disabled="isType" label="大地坐标系" prop="time">
-                  <el-input :style="{width: '50%'}" placeholder="大地坐标系" ref="ddzb" v-model="ddzb"></el-input>
-                  <el-button type="primary" @click="handle" class="properties">
+    <div class="clock" style="margin-bottom:15px;">
+      <el-button @click="subitGeocentric" size="small">地心坐标</el-button>
+      <el-button @click="subitearth" size="small">大地坐标</el-button>
+      <el-button @click="subitnortheast" size="small">东北坐标</el-button>
+    </div>
+
+    <div class="allbody" v-show="geocentricX">
+      <el-card>
+          <div class="user" style="margin-top: 20px;">
+            地心地固直角坐标系：
+            <el-input v-model="XYZ2ENUDATA.input.X " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input.Y " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input.Z " style="width: 220px"/>
+            <el-button @click="refresh" class="properties">刷新</el-button>
+          </div>
+          <!-- <div class="frequency" style="margin-top: 20px;margin-left: 65px;">
+            大地坐标系：
+            <el-input v-model="XYZ2ENUDATA.input2.B " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input2.H " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input2.L " style="width: 220px"/>
+            <el-button @click="refresh" class="properties">刷新</el-button>
+          </div> -->
+        <!-- <span v-if="isType">地心地固直角坐标系:{{ XYZ2ENUDATA.input.X }},{{ XYZ2ENUDATA.input.Y }},{{ XYZ2ENUDATA.input.Z }}</span>
+        <span v-else>大地坐标系:{{ XYZ2ENUDATA.input2.B }},{{ XYZ2ENUDATA.input2.H }},{{ XYZ2ENUDATA.input2.L }}</span> -->
+      </el-card>
+
+      <el-card  class="card" style="margin-top: 10px">
+        <p style="font-size: 14px;font-weight: 600;">请将地心地固直角坐标系转换成大地坐标系，根据大地坐标系转换成东北坐标系</p>
+        <div >
+          <div style="padding-top: 25px;">
+            <el-form ref="form" size="medium" label-width="100px">
+              <el-row :gutter="24">
+                <el-col :span="24">
+                  <el-form-item :disabled="isType" label="大地坐标系" prop="time">
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系X" v-model="earth.B"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系Y" v-model="earth.H"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系Z" v-model="earth.L"></el-input>
+                    <el-button type="primary" @click="handle" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                  <el-form-item :disabled="plsType" label="东北天坐标" prop="time">
+                    <el-input :style="{width: '90%'}" placeholder="东北天坐标系" v-model="northeast"></el-input>
+                    <el-button type="primary" @click="handle1" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <!-- <el-row>
+                <el-col :span="24" :style="{ textAlign: 'center' }">
+                  <el-button type="primary" @click="handle">
                     提交
                   </el-button>
-                </el-form-item>
-                <el-form-item :disabled="plsType" label="东北天坐标" prop="time">
-                  <el-input :style="{width: '50%'}" placeholder="东北天坐标系" ref="dbzb" v-model="dbzb"></el-input>
-                  <el-button type="primary" @click="handle1" class="properties">
-                    提交
-                  </el-button>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <!-- <el-row>
-              <el-col :span="24" :style="{ textAlign: 'center' }">
-                <el-button type="primary" @click="handle">
-                  提交
-                </el-button>
-              </el-col>
-            </el-row> -->
-          </el-form>
+                </el-col>
+              </el-row> -->
+            </el-form>
+          </div>
         </div>
-      </div>
-    </el-card>
+      </el-card>
+    </div>
+    <!--大地坐标-->
+    <div class="allbody" v-show="earthY">
+      <el-card>
+          <div class="user" style="margin-top: 20px;">
+            大地坐标系：
+            <el-input v-model="XYZ2ENUDATA.input2.B " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input2.H " style="width: 220px"/>
+            <el-input v-model="XYZ2ENUDATA.input2.L " style="width: 220px"/>
+            <el-button @click="refreshearch" class="properties">刷新</el-button>
+          </div>
+      </el-card>
+
+      <el-card  class="card" style="margin-top: 10px">
+        <p style="font-size: 14px;font-weight: 600;">请将大地坐标系转换成地心地固直角坐标系，根据大地坐标系转换成东北坐标系</p>
+        <div >
+          <div style="padding-top: 25px;">
+            <el-form ref="form" size="medium" label-width="140px">
+              <el-row :gutter="24">
+                <el-col :span="24">
+                  <el-form-item :disabled="isType" label="地心地固直角坐标系" prop="time">
+                    <el-input :style="{width: '30%'}" placeholder="地心地固直角坐标系X" v-model="geocentricint.X"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="地心地固直角坐标系Y" v-model="geocentricint.Y"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="地心地固直角坐标系Z" v-model="geocentricint.Z"></el-input>
+                    <el-button type="primary" @click="handleGrend" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                  <el-form-item :disabled="plsType" label="东北天坐标" prop="time">
+                    <el-input :style="{width: '90%'}" placeholder="东北天坐标系" v-model="northeast"></el-input>
+                    <el-button type="primary" @click="handle1" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+        </div>
+      </el-card>
+    </div>
+    <!--东北坐标-->
+    <div class="allbody" v-show="northeastZ">
+      <el-card>
+          <div class="user" style="margin-top: 20px;">
+            东北坐标系：
+            <el-input :style="{width: '60%'}" placeholder="东北天坐标系" v-model="XYZ2ENUDATA.output.e"></el-input>
+           
+            <el-button @click="refreshtheast" class="properties">刷新</el-button>
+          </div>
+      </el-card>
+
+      <el-card  class="card" style="margin-top: 10px">
+        <p style="font-size: 14px;font-weight: 600;">请将东北坐标系转换成地心地固坐标系，根据大地坐标系转换成东北坐标系</p>
+        <div >
+          <div style="padding-top: 25px;">
+            <el-form ref="form" size="medium" label-width="120px">
+              <el-row :gutter="24">
+                <el-col :span="24">
+                  <el-form-item :disabled="plsType" label="地心地固坐标系" prop="time">
+                     <el-input :style="{width: '30%'}" placeholder="地心地固坐标系X" v-model="geocentricint.X " style="width: 220px"/>
+                    <el-input :style="{width: '30%'}" placeholder="地心地固坐标系Y" v-model="geocentricint.Y " style="width: 220px"/>
+                    <el-input :style="{width: '30%'}" placeholder="地心地固坐标系Z" v-model="geocentricint.Z " style="width: 220px"/>
+                    <el-button type="primary" @click="handleGrend" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                  <el-form-item :disabled="isType" label="大地坐标系" prop="time">
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系X" v-model="earth.B"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系Y" v-model="earth.H"></el-input>
+                    <el-input :style="{width: '30%'}" placeholder="大地坐标系Z" v-model="earth.L"></el-input>
+                    <el-button type="primary" @click="handle" class="properties">
+                      提交
+                    </el-button>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+        </div>
+      </el-card>
+    </div>
     <!-- <el-card v-else class="card" style="margin-top: 10px">
       <p>ps:大地坐标系转换为东北天坐标系</p>
       <div style="text-align: center">
@@ -102,8 +195,12 @@ export default {
       isType: false,
       plsType:true,
       XYZ2ENUDATA: {},
-      ddzb: '',
-      dbzb: '',
+      geocentricint:{X:'',Y:'',Z:'',},
+      earth:{B:'',H:'',L:''},
+      northeast:'',
+      geocentricX:true,
+      earthY:false,
+      northeastZ:false,
     }
   },
   created() {
@@ -123,31 +220,33 @@ export default {
         console.log(response)
         this.XYZ2ENUDATA = response.data
       })
-      this.ddzb = ''
-      this.dbzb = ''
+      this.earth = {B:'',H:'',L:''}
+      this.northeast = ''
     },
     handle() {
+      var earthnum = this.earth.B + "," + this.earth.H + "," + this.earth.L
       var v = this.XYZ2ENUDATA.input2.B + "," + this.XYZ2ENUDATA.input2.L + "," + this.XYZ2ENUDATA.input2.H
-      if (this.ddzb === v) {
+      if (earthnum === v) {
         this.$confirm('转换正确!', '提示', {
           confirmButtonText: '下一题',
           type: 'success'
         }).then(() => {
 
         })
-        this.isType = false
       } else {
          this.$confirm('转换错误，正确答案为：' + v, '提示', {
                 confirmButtonText: '确定',
                 type: 'warning'
               }).then(()=>{
-                this.ddzb = this.XYZ2ENUDATA.input2.B + "," + this.XYZ2ENUDATA.input2.L + "," + this.XYZ2ENUDATA.input2.H
+                this.earth.B = this.XYZ2ENUDATA.input2.B
+                this.earth.H = this.XYZ2ENUDATA.input2.L
+                this.earth.L = this.XYZ2ENUDATA.input2.H
               })
       }
     },
     handle1() {
       var v = this.XYZ2ENUDATA.output.e
-      if ((this.dbzb) * 1 === v) {
+      if ((this.northeast) * 1 === v) {
         this.$confirm('转换正确!', '提示', {
           confirmButtonText: '完成',
           type: 'success'
@@ -159,10 +258,68 @@ export default {
           confirmButtonText: '确定',
           type:'warning'
         }).then(()=>{
-          this.dbzb = this.XYZ2ENUDATA.output.e
+          this.northeast = this.XYZ2ENUDATA.output.e
         })
       }
-    }
+    },
+    //切换地心按钮
+    subitGeocentric(){
+      this.geocentricX = true
+      this.earthY = false
+      this.northeastZ = false
+    },
+    //切换大地按钮
+    subitearth(){
+      this.earthY = true
+      this.geocentricX = false
+      this.northeastZ = false
+    },
+    //切换东北坐标按钮
+    subitnortheast(){
+      this.earthY = false
+      this.geocentricX = false
+      this.northeastZ = true
+    },
+    //地心地固提交
+    handleGrend(){
+      var earthnum = this.geocentricint.X + "," + this.geocentricint.Y + "," + this.geocentricint.Z
+      var v = this.XYZ2ENUDATA.input.X + "," + this.XYZ2ENUDATA.input.Y + "," + this.XYZ2ENUDATA.input.Z
+      if (earthnum === v) {
+        this.$confirm('转换正确!', '提示', {
+          confirmButtonText: '下一题',
+          type: 'success'
+        }).then(() => {
+
+        })
+      } else {
+         this.$confirm('转换错误，正确答案为：' + v, '提示', {
+                confirmButtonText: '确定',
+                type: 'warning'
+              }).then(()=>{
+                this.geocentricint.X = this.XYZ2ENUDATA.input.X
+                this.geocentricint.Y = this.XYZ2ENUDATA.input.Y
+                this.geocentricint.Z = this.XYZ2ENUDATA.input.Z
+              })
+      }
+    },
+
+    //大地刷新按钮
+    refreshearch(){
+      XYZ2ENU().then(response => {
+        console.log(response)
+        this.XYZ2ENUDATA = response.data
+      })
+      this.geocentricint = {X:'',Y:'',Z:''}
+      this.northeast = ''
+    },
+    refreshtheast(){
+       XYZ2ENU().then(response => {
+        console.log(response)
+        this.XYZ2ENUDATA = response.data
+      })
+      this.geocentricint = {X:'',Y:'',Z:''}
+      this.earth = {B:'',H:'',L:''}
+    },
   }
 }
 </script>

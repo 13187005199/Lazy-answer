@@ -47,7 +47,7 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn1" @click="handle">下一步</el-button>
                   <!-- <i v-if="lisTime1" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
@@ -61,7 +61,7 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn2" @click="handle">下一步</el-button>
                   <!-- <i v-if="lisTime2" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
@@ -75,7 +75,7 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn3" @click="handle">下一步</el-button>
                   <!-- <i v-if="lisTime3" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
@@ -89,7 +89,7 @@
                             clearable/>
                 </el-col>
                 <el-col :span="2">
-                  <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn4" @click="handle">下一步</el-button>
                   <!-- <i v-if="lisTime4" style="color: #00ff80" class="el-icon-success"></i> -->
                 </el-col>
               </el-form-item>
@@ -104,7 +104,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if ="lisTime5" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn5" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
 
@@ -118,7 +118,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime6" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn6" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
 
@@ -132,7 +132,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime7" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn7" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
 
@@ -145,7 +145,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime8" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn8" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算真近点角" prop="zjjTime" label-width="300px" style="width: 1000px">
@@ -157,7 +157,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime9" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn9" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn9" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算纬度幅角" prop="wdfjTime" label-width="300px" style="width: 1000px">
@@ -169,7 +169,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime10" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn10" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn10" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算径向距离" prop="jjjlTime" label-width="300px" style="width: 1000px">
@@ -181,7 +181,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime11" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn11" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn11" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算卫星在轨道平面内的坐标" prop="pmzvTime" label-width="300px"
@@ -194,7 +194,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime12" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn12" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn12" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <el-form-item  label="计算改正后的升交点经度" prop="sjdTime" label-width="300px"
@@ -207,7 +207,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime13" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn13" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn13" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
               <!--              <el-form-item v-if="isTime11" label="计算参考时刻的轨道倾角" prop="gdqjTime" label-width="500px"  style="width: 1000px">
@@ -226,7 +226,7 @@
                 </el-col>
                 <el-col :span="2">
                   <!-- <i v-if="lisTime14" style="color: #00ff80" class="el-icon-success"></i> -->
-                  <el-button class="attribute" v-if="btn14" @click="handle">下一题</el-button>
+                  <el-button class="attribute" v-if="btn14" @click="handle">下一步</el-button>
                 </el-col>
               </el-form-item>
             </el-col>

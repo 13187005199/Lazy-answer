@@ -44,7 +44,7 @@
         </el-form>
       </div> -->
            <div>
-            <p>ps:{{ isTime ? '请将格里高利时转换为儒略日后进行输入' : '请将儒略日转换为格里高利时后进行输入' }}</p>
+            <!-- <p>ps:{{ isTime ? '请将格里高利时转换为儒略日后进行输入' : '请将儒略日转换为格里高利时后进行输入' }}</p> -->
              <el-form ref="form" :model="form" size="medium" label-width="300px">
                <el-row :gutter="24">
                  <el-col :span="12">
@@ -62,7 +62,7 @@
                                  clearable/>
                      </el-col>
                      <el-col :span="2">
-                       <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
+                       <el-button class="attribute" v-if="btn1" @click="handle">下一步</el-button>
                        <!-- <i v-if="isTime1" style="color: #00ff80" class="el-icon-success"></i>
                        <i v-else style="color: red" class="el-icon-error"></i> -->
                      </el-col>
@@ -76,7 +76,7 @@
                                  clearable/>
                      </el-col>
                      <el-col :span="2">
-                       <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                       <el-button class="attribute" v-if="btn2" @click="handle">下一步</el-button>
                        <!-- <i v-if="isTime2" style="color: #00ff80" class="el-icon-success"></i>
                        <i v-else style="color: red" class="el-icon-error"></i> -->
                      </el-col>
@@ -91,7 +91,7 @@
                                   clearable/>
                       </el-col>
                      <el-col :span="2">
-                       <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
+                       <el-button class="attribute" v-if="btn3" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime3" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -105,7 +105,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn4" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime4" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -119,7 +119,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn5" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime5" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -132,7 +132,7 @@
                                   clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn6" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime6" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -144,7 +144,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn7" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime7" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -156,7 +156,7 @@
                                 clearable/>
                       </el-col>
                      <el-col :span="2">
-                       <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
+                       <el-button class="attribute" v-if="btn8" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime8" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -169,7 +169,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn9" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn9" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime9" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -182,7 +182,7 @@
                                 clearable/>
                       </el-col>
                      <el-col :span="2">
-                       <el-button class="attribute" v-if="btn10" @click="handle">下一题</el-button>
+                       <el-button class="attribute" v-if="btn10" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime10" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -195,7 +195,7 @@
                                 clearable/>
                       </el-col>
                       <el-col :span="2">
-                        <el-button class="attribute" v-if="btn11" @click="handle">下一题</el-button>
+                        <el-button class="attribute" v-if="btn11" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime11" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>
@@ -209,7 +209,7 @@
                                 clearable/>
                     </el-col> 
                     <el-col :span="2">
-                      <el-button class="attribute" v-if="btn12" @click="handle">下一题</el-button>
+                      <el-button class="attribute" v-if="btn12" @click="handle">下一步</el-button>
                         <!-- <i v-if="isTime12" style="color: #00ff80" class="el-icon-success"></i>
                         <i v-else style="color: red" class="el-icon-error"></i> -->
                       </el-col>

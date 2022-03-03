@@ -50,7 +50,7 @@
                   </el-col>
                   <el-col :span="2">
                     <!-- <i v-if="form.heightAnswer" style="color: #00ff80" class="el-icon-success"></i> -->
-                    <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
+                    <el-button class="attribute" v-if="btn1" @click="handle">下一步</el-button>
                   </el-col>
                 </el-row>
               </el-col>
@@ -63,7 +63,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="2">
-                    <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                    <el-button class="attribute" v-if="btn2" @click="handle">下一步</el-button>
                     <!-- <i v-if="form.fwjAnswer" style="color: #00ff80" class="el-icon-success"></i> -->
                   </el-col>
                 </el-row>
@@ -78,7 +78,7 @@
               </el-col>
               <el-col :span="5">
                 <!-- <i v-if="form.ccdAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
-                <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn3" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="10">
@@ -89,7 +89,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn4" @click="handle">下一步</el-button>
                 <!-- <i v-if="form.a2Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
@@ -101,7 +101,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn5" @click="handle">下一步</el-button>
                 <!-- <i v-if="form.a4Answer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
@@ -114,7 +114,7 @@
               </el-col>
               <el-col :span="5">
                 <!-- <i v-if="form.czdlAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
-                <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn6" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="10">
@@ -125,7 +125,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn7" @click="handle">下一步</el-button>
                 <!-- <i v-if="form.tyAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
               </el-col>
             </el-row>
@@ -138,7 +138,7 @@
               </el-col>
               <el-col :span="5">
                 <!-- <i v-if="form.yinziAnswer" style="color: #00ff80;text-align: center" class="el-icon-success"></i> -->
-                <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn8" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row>

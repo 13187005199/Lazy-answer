@@ -54,7 +54,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="5">
-                    <el-button class="attribute" v-if="btn1" @click="handle">下一题</el-button>
+                    <el-button class="attribute" v-if="btn1" @click="handle">下一步</el-button>
                   </el-col>
                 </el-row>
               </el-col>
@@ -66,7 +66,7 @@
                             placeholder="计算方位角"></el-input>
                     </el-col>
                     <el-col :span="5">
-                      <el-button class="attribute" v-if="btn2" @click="handle">下一题</el-button>
+                      <el-button class="attribute" v-if="btn2" @click="handle">下一步</el-button>
                     </el-col>
                   </el-row>
                 </el-form-item>
@@ -80,7 +80,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn3" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn3" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -91,7 +91,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn4" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn4" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -102,7 +102,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn5" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn5" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -113,7 +113,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn6" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn6" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -123,7 +123,7 @@
                 </el-form-item>
               </el-col>
               <el_col :span="2">
-                <el-button class="attribute" v-if="btn7" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn7" @click="handle">下一步</el-button>
               </el_col>
             </el-row>
             <el-row :gutter="15">
@@ -134,7 +134,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn8" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn8" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -145,7 +145,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn9" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn9" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -156,7 +156,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn10" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn10" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -167,7 +167,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn11" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn11" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="15">
@@ -178,7 +178,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="2">
-                <el-button class="attribute" v-if="btn12" @click="handle">下一题</el-button>
+                <el-button class="attribute" v-if="btn12" @click="handle">下一步</el-button>
               </el-col>
             </el-row>
             <el-row>

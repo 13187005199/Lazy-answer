@@ -61,7 +61,7 @@ export default {
         {
           index: 0,
           url: '/web/index',
-          name: '在线答题'
+          name: '在线作业'
         },
         {
           index: 1,
