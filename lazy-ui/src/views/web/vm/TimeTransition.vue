@@ -77,7 +77,7 @@
             <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
                 <el-button @click="submitHandle" type="primary">
-                  提交
+                  转换
                 </el-button>
               </el-col>
             </el-row>
@@ -131,7 +131,7 @@ export default {
             if ((this.form.julian * 1) === this.julianTime(this.form.time)) {
               this.active = 2
               this.notifySuccess("正确", "转换正确")
-              this.randomDate()
+              // this.randomDate()
               // this.rest();
             } else {
               this.active = 2

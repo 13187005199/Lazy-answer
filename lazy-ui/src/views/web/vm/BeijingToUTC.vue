@@ -33,7 +33,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="UTC" prop="utc">
+          <el-form-item label="UTC" prop="utc" >
             <!-- <el-input v-model="form.utc" placeholder="输入北斗时转换的UTC" style="width: 200px"></el-input> -->
             <el-date-picker
               :style="{width: '300px'}"
@@ -42,9 +42,10 @@
               placeholder="选择UTC时间"
               clearable
               @change="timeChange"
+              :disabled="timesbj"
             >
             </el-date-picker>
-            <el-button @click="submitUTC">提交</el-button>
+            <el-button @click="submitUTC" v-if="operation">转换</el-button>
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -58,9 +59,10 @@
               clearable
               @change="timeChange"
                ref="bjInput"
+               :disabled="timesbj1"
             >
             </el-date-picker>
-            <el-button @click="submitBEIJIN">提交</el-button>
+            <el-button @click="submitBEIJIN" v-if="operation1">转换</el-button>
           </el-form-item>
         </el-col>
       </el-form>
@@ -125,8 +127,8 @@
 
         <el-col :span="24">
           <el-form-item label="北斗时" prop="bd">
-            <el-input placeholder="请输入北斗时" v-model="form.bd" style="width: 300px"></el-input>
-            <el-button @click="getbtime">提交</el-button>
+            <el-input placeholder="请输入北斗时" v-model="form.bd" style="width: 300px" :disabled="timesbj"></el-input>
+            <el-button @click="getbtime" v-if="operation">转换</el-button>
           </el-form-item>
         </el-col>
         
@@ -141,9 +143,10 @@
               clearable
               @change="timeChange"
                ref="bjInput"
+               :disabled="timesbj1"
             >
             </el-date-picker>
-            <el-button @click="submitbjtime">提交</el-button>
+            <el-button @click="submitbjtime" v-if="operation1">转换</el-button>
           </el-form-item>
         </el-col>
       </el-form>
@@ -169,16 +172,17 @@
               placeholder="选择UTC时间"
               clearable
               @change="timeChange"
+              :disabled="timesbj"
             >
             </el-date-picker>
-            <el-button @click="submitUTCnums">提交</el-button>
+            <el-button @click="submitUTCnums" v-if="operation">转换</el-button>
           </el-form-item>
         </el-col>
 
         <el-col :span="24">
           <el-form-item label="北斗时" prop="bd">
-            <el-input placeholder="请输入北斗时" v-model="form.bd" style="width: 300px"></el-input>
-            <el-button @click="submitBD">提交</el-button>
+            <el-input placeholder="请输入北斗时" v-model="form.bd" :disabled="timesbj1" style="width: 300px"></el-input>
+            <el-button @click="submitBD" v-if="operation1">转换</el-button>
           </el-form-item>
         </el-col>
       </el-form>
@@ -219,6 +223,10 @@ export default {
       isnows:true,
       isnums:false,
       iscards:false,
+      timesbj:false,
+      timesbj1:true,
+      operation:true,
+      operation1:false
       // rules:{
       //   bd: [
       //     {required: true, message: '请输入北斗时', trigger: 'blur'}
@@ -251,6 +259,10 @@ export default {
       this.form.bd = bdsWeek + "周" + bdsWIS
       this.form.bjTime = ''
       this.form.utc = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     },
     submitUTC() {
       var bd = this.form.bd;
@@ -281,6 +293,10 @@ export default {
       }
       if (utcTime == utc) {
         this.notifySuccess("正确", "转换正确")
+        this.timesbj = true
+        this.timesbj1 = false
+        this.operation = false
+        this.operation1 = true
       } else {
         this.$confirm('转换错误，正确答案为：' + utcTime, '提示', {
           confirmButtonText: '确定',
@@ -299,6 +315,10 @@ export default {
       if (userBeiJinTime !== '') {
         if (userBeiJinTime === systemBeiJinTime) {
           this.notifySuccess("正确", "转换正确")
+          this.timesbj = true
+          this.timesbj1 = true
+          this.operation = false
+          this.operation1 = false
         } else {
           this.$confirm('转换错误，正确答案为：' + systemBeiJinTime, '提示', {
             confirmButtonText: '确定',
@@ -326,6 +346,11 @@ export default {
       this.form.bd = bdsWeek + "周" + bdsWIS
       this.form.bjTime = ''
       this.form.utc = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
+      
     },
     // UTC按钮
     formation2(){
@@ -344,6 +369,10 @@ export default {
       this.form.utc = utcTime
       this.form.bd = ''
       this.form.bjTime = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     },
     //UTC时下北斗提交按钮
     getbtime(){
@@ -352,6 +381,10 @@ export default {
       }
       if (this.form.bd == this.bdtime) {
         this.notifySuccess("正确", "转换正确")
+        this.timesbj = true
+        this.timesbj1 = false
+        this.operation = false
+        this.operation1 = true
       } else {
         this.$confirm('转换错误，正确答案为：' + this.bdtime, '提示', {
           confirmButtonText: '确定',
@@ -368,6 +401,10 @@ export default {
       }
       if (this.form.bjTime == this.beiJinTime) {
         this.notifySuccess("正确", "转换正确")
+        this.timesbj = true
+        this.timesbj1 = true
+        this.operation = false
+        this.operation1 = false
       } else {
         this.$confirm('转换错误，正确答案为：' + this.beiJinTime, '提示', {
           confirmButtonText: '确定',
@@ -394,6 +431,10 @@ export default {
       this.form.bjTime = beiJinTime
       this.form.bd = ''
       this.form.utc = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     },
     //北京时下UTC提交按钮
     submitUTCnums(){
@@ -402,6 +443,10 @@ export default {
       }
       if (this.form.utc == this.utcTime) {
         this.notifySuccess("正确", "转换正确")
+        this.timesbj = true
+        this.timesbj1 = false
+        this.operation = false
+        this.operation1 = true
       } else {
         this.$confirm('转换错误，正确答案为：' + this.utcTime, '提示', {
           confirmButtonText: '确定',
@@ -418,6 +463,10 @@ export default {
       }
       if (this.form.bd == this.bdtime) {
         this.notifySuccess("正确", "转换正确")
+        this.timesbj = true
+        this.timesbj1 = true
+        this.operation = false
+        this.operation1 = false
       } else {
         this.$confirm('转换错误，正确答案为：' + this.bdtime, '提示', {
           confirmButtonText: '确定',
@@ -440,6 +489,10 @@ export default {
       this.form.utc = utcTime
       this.form.bd = ''
       this.form.bjTime = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     },
     //刷新默认的北京时间
     getbjdate(){
@@ -454,6 +507,10 @@ export default {
       this.form.bjTime = beiJinTime
       this.form.bd = ''
       this.form.utc = ''
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     }
   },
   

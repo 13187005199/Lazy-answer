@@ -233,7 +233,7 @@
           </el-row>
           <el-row>
             <el-col :span="24" :style="{ textAlign: 'center' }">
-              <el-button type="primary" @click="handle" v-if="btn15">
+              <el-button type="primary" @click="handle1" v-if="btn15">
                 提交
               </el-button>
             </el-col>
@@ -337,6 +337,14 @@ export default {
       this.btn13 = false
       this.btn14 = false
       this.btn15 = false
+    },
+    handle1(){
+       this.$confirm('转换正确，点击刷新重新答题!', '提示', {
+            confirmButtonText: '确定',
+            type: 'success'
+          }).then(() => {
+            
+          })
     },
     handle(){
       if (!this.isTime1) {

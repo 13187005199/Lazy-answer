@@ -10,7 +10,7 @@
           <span v-else style="float: right;color: #498c5f"> <a
             :href="exData.resource.url" target="_blank">点击此处下载实验大纲</a></span>
         </div>
-        <div style="" v-html="exData.process">
+        <div style="padding-top:15px;" v-html="exData.process">
 
         </div>
       </el-card>
@@ -41,9 +41,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="BDT钟差" prop="time">
-                    <el-input :style="{width: '50%'}" ref="BDT" v-model="BDT" placeholder="BDT钟差"></el-input>
-                    <el-button type="primary" @click="handle" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}" ref="BDT" v-model="BDT" placeholder="BDT钟差" :disabled="timesbj"></el-input>
+                    <el-button type="primary" @click="handle" class="properties" v-if="operation">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -51,9 +51,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="GPST钟差" prop="time">
-                    <el-input :style="{width: '50%'}" ref="GPST" v-model="GPST" placeholder="GPST钟差"></el-input>
-                    <el-button type="primary" @click="handle1" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}" ref="GPST" v-model="GPST" placeholder="GPST钟差" :disabled="timesbj1"></el-input>
+                    <el-button type="primary" @click="handle1" class="properties" v-if="operation1">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -93,9 +93,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="BDT参数" prop="time">
-                    <el-input :style="{width: '50%'}"  v-model="bardes" placeholder="请输入BDT参数"></el-input>
-                    <el-button type="primary" @click="subitm" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}"  v-model="bardes" placeholder="请输入BDT参数" :disabled="timesbj"></el-input>
+                    <el-button type="primary" @click="subitm" class="properties" v-if="operation">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -103,9 +103,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="GPST参数" prop="time">
-                    <el-input :style="{width: '50%'}"  v-model="garpage" placeholder="请输入GPST参数"></el-input>
-                    <el-button type="primary" @click="subitm1" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}"  v-model="garpage" placeholder="请输入GPST参数" :disabled="timesbj1"></el-input>
+                    <el-button type="primary" @click="subitm1" class="properties" v-if="operation1">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -142,6 +142,10 @@ export default {
       nummakes:false,
       bardes:'',
       garpage:'',
+      timesbj:false,
+      timesbj1:true,
+      operation:true,
+      operation1:false
 
     }
   },
@@ -165,6 +169,10 @@ export default {
         this.GPST=null
         this.bardes = ''
         this.garpage = ''
+        this.timesbj = false
+        this.timesbj1 = true
+        this.operation = true
+        this.operation1 = false
     },
     handle(){
         var v = this.data.output.result1
@@ -173,7 +181,10 @@ export default {
           this.$confirm('转换正确!', '提示', {
             type: 'success'
           }).then(() => {
-
+              this.timesbj = true
+              this.timesbj1 = false
+              this.operation = false
+              this.operation1 = true
           })
         } else {
           this.$refs.BDT.focus()
@@ -192,7 +203,10 @@ export default {
             confirmButtonText: '完成',
             type: 'success'
           }).then(() => {
-        
+              this.timesbj = true
+              this.timesbj1 = true
+              this.operation = false
+              this.operation1 = false
           })
 
         } else {
@@ -206,17 +220,31 @@ export default {
       },
       //计算按钮切换换算
       subitbd(){
+        exp7_dianwen().then(response => {
+          this.data = response.data
+        })
         this.markes = true
         this.nummakes = false
-        this.BDT = null
+         this.BDT = null
         this.GPST = null
+        this.timesbj = false
+        this.timesbj1 = true
+        this.operation = true
+        this.operation1 = false
       },
       //钟差按钮切换
       subitst(){
+        exp7_dianwen().then(response => {
+          this.data = response.data
+        })
         this.markes = false
         this.nummakes = true
-        this.BDT = null
-        this.GPST = null
+        this.bardes = ''
+        this.garpage = ''
+        this.timesbj = false
+        this.timesbj1 = true
+        this.operation = true
+        this.operation1 = false
       },
       //BDT提交按钮
       subitm(){
@@ -226,7 +254,10 @@ export default {
             confirmButtonText: '完成',
             type: 'success'
           }).then(() => {
-            
+              this.timesbj = true
+              this.timesbj1 = false
+              this.operation = false
+              this.operation1 = true
           })
 
         } else {
@@ -246,7 +277,10 @@ export default {
             confirmButtonText: '完成',
             type: 'success'
           }).then(() => {
-            
+              this.timesbj = true
+              this.timesbj1 = true
+              this.operation = false
+              this.operation1 = false
           })
 
         } else {

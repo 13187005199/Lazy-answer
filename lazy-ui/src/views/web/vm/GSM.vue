@@ -42,9 +42,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="修正后的伪距" prop="time">
-                    <el-input  :style="{width: '50%'}"  v-model="wj" placeholder="请输入修正后的伪距"></el-input>
-                    <el-button type="primary" @click="handle" class="properties">
-                      提交
+                    <el-input  :style="{width: '50%'}"  v-model="wj" :disabled="timesbj" placeholder="请输入修正后的伪距"></el-input>
+                    <el-button type="primary" @click="handle" class="properties" v-if="operation">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -52,9 +52,9 @@
               <el-row :gutter="24" >
                 <el-col :span="24">
                   <el-form-item label="电离层延迟" prop="time">
-                    <el-input :style="{width: '50%'}" v-model="dl" placeholder="请输入电离层延迟"></el-input>
-                    <el-button type="primary" @click="handle1" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}" v-model="dl" :disabled="timesbj1" placeholder="请输入电离层延迟"></el-input>
+                    <el-button type="primary" @click="handle1" class="properties" v-if="operation1">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -95,9 +95,9 @@
               <el-row :gutter="24">
                 <el-col :span="24">
                   <el-form-item label="伪距" prop="time">
-                    <el-input  :style="{width: '50%'}"  v-model="afternum" placeholder="请输入伪距"></el-input>
-                    <el-button type="primary" @click="submitafter" class="properties">
-                      提交
+                    <el-input  :style="{width: '50%'}"  v-model="afternum" :disabled="timesbj" placeholder="请输入伪距"></el-input>
+                    <el-button type="primary" @click="submitafter"  class="properties" v-if="operation">
+                     转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -105,9 +105,9 @@
               <el-row :gutter="24" >
                 <el-col :span="24">
                   <el-form-item label="TGD" prop="time">
-                    <el-input :style="{width: '50%'}" v-model="aftername" placeholder="请输入TGD"></el-input>
-                    <el-button type="primary" @click="submitafter1" class="properties">
-                      提交
+                    <el-input :style="{width: '50%'}" v-model="aftername" :disabled="timesbj1" placeholder="请输入TGD"></el-input>
+                    <el-button type="primary" @click="submitafter1" class="properties" v-if="operation1">
+                      转换
                     </el-button>
                   </el-form-item>
                 </el-col>
@@ -145,6 +145,11 @@ export default {
       afterlist:false,
       afternum:null,
       aftername:null,
+      timesbj:false,
+      timesbj1:true,
+      operation:true,
+      operation1:false
+
     }
   },
   created() {
@@ -164,16 +169,26 @@ export default {
         console.log(response)
         this.data = response.data
       })
+      this.afternum = null
+      this.aftername = null
       this.wj = null
       this.dl = null
+      this.timesbj = false
+      this.timesbj1 = true
+      this.operation = true
+      this.operation1 = false
     },
     handle() {
       var v = this.data.output.result1
       if ((this.wj * 1) === this.data.output.result1) {
         this.$confirm('转换正确!', '提示', {
-          confirmButtonText: '下一题',
+          confirmButtonText: '确定',
           type: 'success'
         }).then(() => {
+          this.timesbj = true
+          this.timesbj1 = false
+          this.operation = false
+          this.operation1 = true
         })
         this.getType = true
         this.isType = false
@@ -193,6 +208,10 @@ export default {
             confirmButtonText: '完成',
             type: 'success'
           }).then(() => {
+            this.timesbj = true
+            this.timesbj1 = true
+            this.operation = false
+            this.operation1 = false
           })
         } else {
           this.$confirm('转换错误，正确答案为：'+ v, '提示',{
@@ -209,10 +228,14 @@ export default {
           console.log(response)
           this.data = response.data
         })
-        this.afternum = null
-        this.aftername = null
+        this.wj = null
+        this.dl = null
         this.frontlist = true
         this.afterlist = false
+        this.timesbj = false
+        this.timesbj1 = true
+        this.operation = true
+        this.operation1 = false
       },
       //修正后按钮
       subitafter(){
@@ -220,10 +243,14 @@ export default {
           console.log(response)
           this.data = response.data
         })
-        this.wj = null
-        this.dl = null
+        this.afternum = null
+        this.aftername = null
         this.frontlist = false
         this.afterlist = true
+        this.timesbj = false
+        this.timesbj1 = true
+        this.operation = true
+        this.operation1 = false
       },
       //修正后伪距提交按钮
       submitafter(){
@@ -232,6 +259,10 @@ export default {
           this.$confirm('转换正确!', '提示', {
             type: 'success'
           }).then(() => {
+            this.timesbj = true
+            this.timesbj1 = false
+            this.operation = false
+            this.operation1 = true
           })
           
         } else {
@@ -250,6 +281,10 @@ export default {
           this.$confirm('转换正确!', '提示', {
             type: 'success'
           }).then(() => {
+            this.timesbj = true
+            this.timesbj1 = true
+            this.operation = false
+            this.operation1 = false
           })
           
         } else {

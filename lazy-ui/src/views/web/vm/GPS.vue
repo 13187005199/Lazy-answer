@@ -143,7 +143,7 @@
             </el-row>
             <el-row>
               <el-col :span="24" :style="{ textAlign: 'center' }">
-                <el-button type="primary" @click="handle" v-if="btn9">
+                <el-button type="primary" @click="handle1" v-if="btn9">
                   提交
                 </el-button>
               </el-col>
@@ -237,6 +237,14 @@ export default {
     this.btn7 = false
     this.btn8 = false
     this.btn9 = false
+    },
+    handle1(){
+      this.$confirm('转换正确，点击刷新按钮重新答题!', '提示', {
+            confirmButtonText: '确定',
+            type: 'success'
+          }).then(() => {
+    
+          })
     },
     handle() {
       if (!this.heightFlag) {
@@ -397,7 +405,6 @@ export default {
           }).then(() => {
 
           })
-          this.form.yinziAnswer = true
           this.yinziFlag = true
           this.btn8 = false
           this.btn9 = true

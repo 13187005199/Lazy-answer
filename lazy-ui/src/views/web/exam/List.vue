@@ -3,7 +3,7 @@
      <el-alert
         title="消息通知"
         type="warning"
-         description="你的作业提交时间离截止时间还剩48小时"
+        :description="endtime"
         style="margin-bottom:15px;">
       </el-alert>
     <el-row :gutter="20">
@@ -75,13 +75,15 @@ export default {
         pageNum: 1,
         pageSize: 10,
         title: null,
-        courseId:null
+        courseId:null,
+        endtime:''
       },
     }
   },
   created() {
     this.getCourseList();
     this.getList();
+    this.endtime = '你的作业提交时间离截止时间还剩48小时'
   },
   methods: {
     getList() {

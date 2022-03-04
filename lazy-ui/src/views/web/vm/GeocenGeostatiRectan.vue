@@ -39,7 +39,7 @@
                 <el-input style="width: 200px"  v-model="ddzbx.B"></el-input>
                 <el-input style="width: 200px"  v-model="ddzbx.L"></el-input>
                 <el-input style="width: 200px"  v-model="ddzbx.H"></el-input>
-                <el-button @click="submitGC">提交</el-button>
+                <el-button @click="submitGC">转换</el-button>
               </el-form-item>
             </el-col>
           </el-form>
